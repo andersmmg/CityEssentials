@@ -1,3 +1,5 @@
+import org.jetbrains.changelog.Changelog
+
 plugins {
     id 'fabric-loom' version '1.5-SNAPSHOT'
     id 'maven-publish'
@@ -121,7 +123,7 @@ modrinth {
     versionType = "release"
     uploadFile = remapJar
     syncBodyFrom = rootProject.file("README.md").text
-//    changelog = project.changelog.renderItem(project.changelog.getLatest(), Changelog.OutputType.MARKDOWN)
+    changelog = project.changelog.renderItem(project.changelog.getLatest(), Changelog.OutputType.MARKDOWN)
     tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
     versionName = "${project.mod_version}+${project.minecraft_version} ${project.mod_name}"
     dependencies {
@@ -136,7 +138,7 @@ githubRelease {
     owner = "andersmmg"
     draft = false
     releaseName = "${mod_version}+${minecraft_version}"
-//    body = project.changelog.renderItem(project.changelog.getLatest(), Changelog.OutputType.MARKDOWN)
+    body = project.changelog.renderItem(project.changelog.getLatest(), Changelog.OutputType.MARKDOWN)
     releaseAssets = remapJar
     allowUploadToExisting = false
 //    dryRun = true
