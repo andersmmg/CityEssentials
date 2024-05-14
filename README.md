@@ -9,11 +9,12 @@ City Essentials
 
 ### Description:
 
-City essentials.
+City essentials. Items and blocks for city-style roleplay or decoration.
 
 ### Features:
 
 - **Cash Register:** Store money for customers, or just use it for looks!
+- **Bags:** Store items with quick access from your hotbar
 
 ### Requirements:
 
@@ -31,7 +32,7 @@ City essentials.
 
 ### Planned Possible Features:
 
-- **Sliding Doors**
+- **Doorbells**
 
 Please note that these features are planned possibilities and not guaranteed. As a solo developer, I'll do my best to
 implement them, but development priorities may change.
