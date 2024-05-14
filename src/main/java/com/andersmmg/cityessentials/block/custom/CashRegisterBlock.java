@@ -20,12 +20,14 @@ import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 import java.util.stream.Stream;
 
@@ -52,6 +54,20 @@ public class CashRegisterBlock extends BlockWithEntity {
         if (world.isClient) {
             return ActionResult.SUCCESS;
         }
+        if (state.get(OPEN)) {
+            return ActionResult.CONSUME;
+        }
+        // Check if the player is in front of the block
+        Direction facing = state.get(FACING);
+        Vec3d playerPos = player.getPos();
+        Vec3d blockPos = new Vec3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+        Vector3f direction = new Vector3f((float) (playerPos.x - blockPos.x), (float) (playerPos.y - blockPos.y), (float) (playerPos.z - blockPos.z));
+
+        float dotProduct = facing.getUnitVector().dot(direction);
+        if (dotProduct < 0) {
+            return ActionResult.CONSUME;
+        }
+
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof CashRegisterBlockEntity) {
             player.openHandledScreen((CashRegisterBlockEntity) blockEntity);

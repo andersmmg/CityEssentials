@@ -85,7 +85,11 @@ public class CashRegisterBlockEntity extends LootableContainerBlockEntity {
 
     @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return new Mod3X3ContainerScreenHandler(syncId, playerInventory, this);
+        if (this.stateManager.getViewerCount() > 0) {
+            return null;
+        } else {
+            return new Mod3X3ContainerScreenHandler(syncId, playerInventory, this);
+        }
     }
 
     @Override
