@@ -7,10 +7,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Added paper bags
-- Added grocery bags
-- Added functional cash register block
-
 ### Changed
 
 ### Deprecated
@@ -18,3 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Removed
 
 ### Fixed
+
+## [0.1.0] - 2024-05-13
+
+### Added
+
+- Added paper bags
+- Added grocery bags
+- Added functional cash register block
+
+[Unreleased]: https://github.com/andersmmg/fallout-stuff/compare/v0.1.0...HEAD
+
+[0.1.0]: https://github.com/andersmmg/fallout-stuff/commits/v0.1.0
