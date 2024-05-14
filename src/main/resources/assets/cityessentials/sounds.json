@@ -1,0 +1,20 @@
+{
+  "cash_register_open": {
+    "subtitle": "sounds.cityessentials.cash_register_open",
+    "sounds": [
+      "cityessentials:cash_register_open"
+    ]
+  },
+  "cash_register_close": {
+    "subtitle": "sounds.cityessentials.cash_register_close",
+    "sounds": [
+      "cityessentials:cash_register_close"
+    ]
+  },
+  "paper_bag_open": {
+    "subtitle": "sounds.cityessentials.paper_bag_open",
+    "sounds": [
+      "cityessentials:paper_bag_open"
+    ]
+  }
+}

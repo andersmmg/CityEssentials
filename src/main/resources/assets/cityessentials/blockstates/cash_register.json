@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,open=false": {
+      "model": "cityessentials:block/cash_register",
+      "y": 90
+    },
+    "facing=north,open=false": {
+      "model": "cityessentials:block/cash_register"
+    },
+    "facing=south,open=false": {
+      "model": "cityessentials:block/cash_register",
+      "y": 180
+    },
+    "facing=west,open=false": {
+      "model": "cityessentials:block/cash_register",
+      "y": 270
+    },
+    "facing=east,open=true": {
+      "model": "cityessentials:block/cash_register_open",
+      "y": 90
+    },
+    "facing=north,open=true": {
+      "model": "cityessentials:block/cash_register_open"
+    },
+    "facing=south,open=true": {
+      "model": "cityessentials:block/cash_register_open",
+      "y": 180
+    },
+    "facing=west,open=true": {
+      "model": "cityessentials:block/cash_register_open",
+      "y": 270
+    }
+  }
+}
