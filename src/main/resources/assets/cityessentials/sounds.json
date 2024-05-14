@@ -16,5 +16,11 @@
     "sounds": [
       "cityessentials:paper_bag_open"
     ]
+  },
+  "grocery_bag_open": {
+    "subtitle": "sounds.cityessentials.grocery_bag_open",
+    "sounds": [
+      "cityessentials:grocery_bag_open"
+    ]
   }
 }

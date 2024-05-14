@@ -1,10 +1,12 @@
 {
   "item.cityessentials.paper_bag": "Paper Bag",
+  "item.cityessentials.grocery_bag": "Grocery Bag",
   "container.box.more": "and %s more...",
   "block.cityessentials.cash_register": "Cash Register",
   "sounds.cityessentials.cash_register_open": "Cash Register Opened",
   "sounds.cityessentials.cash_register_close": "Cash Register Closed",
   "sounds.cityessentials.paper_bag_open": "Bag Rustles",
+  "sounds.cityessentials.grocery_bag_open": "Bag Rustles",
   "text.config.cityessentials.title": "City Essentials Configuration",
   "itemGroup.cityessentials.fallout_stuff": "City Essentials"
 }

@@ -7,7 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Added paper bag item
+- Added paper bags
+- Added grocery bags
+- Added functional cash register block
 
 ### Changed
 
