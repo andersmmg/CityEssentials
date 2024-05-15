@@ -2,6 +2,7 @@ package com.andersmmg.cityessentials.datagen;
 
 import com.andersmmg.cityessentials.block.ModBlocks;
 import com.andersmmg.cityessentials.block.custom.CashRegisterBlock;
+import com.andersmmg.cityessentials.block.custom.MailboxBlock;
 import com.andersmmg.cityessentials.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -17,6 +18,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         registerOpenableBlock(blockStateModelGenerator, ModBlocks.CASH_REGISTER);
+        registerMailbox(blockStateModelGenerator, ModBlocks.MAILBOX);
     }
 
     @Override
@@ -36,5 +38,17 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
                 .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
                 .coordinate(BlockStateModelGenerator.createBooleanModelMap(CashRegisterBlock.OPEN, model_open, model_base)));
+    }
+
+    private void registerMailbox(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        BlockStateVariantMap.DoubleProperty<Boolean, Boolean> doubleProperty = BlockStateVariantMap.create(MailboxBlock.FLAG, MailboxBlock.OPEN);
+
+        doubleProperty.register(true, true, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(block, "_flag_open")));
+        doubleProperty.register(true, false, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(block, "_flag")));
+        doubleProperty.register(false, true, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(block, "_open")));
+        doubleProperty.register(false, false, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockModelId(block)));
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(doubleProperty)
+                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
     }
 }

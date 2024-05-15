@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=east,flag=false,open=false": {
+      "model": "cityessentials:block/mailbox",
+      "y": 90
+    },
+    "facing=east,flag=false,open=true": {
+      "model": "cityessentials:block/mailbox_open",
+      "y": 90
+    },
+    "facing=east,flag=true,open=false": {
+      "model": "cityessentials:block/mailbox_flag",
+      "y": 90
+    },
+    "facing=east,flag=true,open=true": {
+      "model": "cityessentials:block/mailbox_flag_open",
+      "y": 90
+    },
+    "facing=north,flag=false,open=false": {
+      "model": "cityessentials:block/mailbox"
+    },
+    "facing=north,flag=false,open=true": {
+      "model": "cityessentials:block/mailbox_open"
+    },
+    "facing=north,flag=true,open=false": {
+      "model": "cityessentials:block/mailbox_flag"
+    },
+    "facing=north,flag=true,open=true": {
+      "model": "cityessentials:block/mailbox_flag_open"
+    },
+    "facing=south,flag=false,open=false": {
+      "model": "cityessentials:block/mailbox",
+      "y": 180
+    },
+    "facing=south,flag=false,open=true": {
+      "model": "cityessentials:block/mailbox_open",
+      "y": 180
+    },
+    "facing=south,flag=true,open=false": {
+      "model": "cityessentials:block/mailbox_flag",
+      "y": 180
+    },
+    "facing=south,flag=true,open=true": {
+      "model": "cityessentials:block/mailbox_flag_open",
+      "y": 180
+    },
+    "facing=west,flag=false,open=false": {
+      "model": "cityessentials:block/mailbox",
+      "y": 270
+    },
+    "facing=west,flag=false,open=true": {
+      "model": "cityessentials:block/mailbox_open",
+      "y": 270
+    },
+    "facing=west,flag=true,open=false": {
+      "model": "cityessentials:block/mailbox_flag",
+      "y": 270
+    },
+    "facing=west,flag=true,open=true": {
+      "model": "cityessentials:block/mailbox_flag_open",
+      "y": 270
+    }
+  }
+}

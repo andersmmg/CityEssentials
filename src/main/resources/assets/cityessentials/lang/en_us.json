@@ -7,10 +7,13 @@
   "item.cityessentials.cash_20": "$20 Bill",
   "container.box.more": "and %s more...",
   "block.cityessentials.cash_register": "Cash Register",
+  "block.cityessentials.mailbox": "Mailbox",
   "sounds.cityessentials.cash_register_open": "Cash Register Opened",
   "sounds.cityessentials.cash_register_close": "Cash Register Closed",
   "sounds.cityessentials.paper_bag_open": "Bag Rustles",
   "sounds.cityessentials.grocery_bag_open": "Bag Rustles",
+  "sounds.cityessentials.mailbox_open": "Mailbox Opened",
+  "sounds.cityessentials.mailbox_close": "Mailbox Closed",
   "text.config.cityessentials.title": "City Essentials Configuration",
   "itemGroup.cityessentials.fallout_stuff": "City Essentials"
 }

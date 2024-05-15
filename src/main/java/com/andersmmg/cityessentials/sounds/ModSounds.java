@@ -11,6 +11,8 @@ public class ModSounds {
     public static final SoundEvent CASH_REGISTER_CLOSE = registerSoundEvent("cash_register_close");
     public static final SoundEvent PAPER_BAG_OPEN = registerSoundEvent("paper_bag_open");
     public static final SoundEvent GROCERY_BAG_OPEN = registerSoundEvent("grocery_bag_open");
+    public static final SoundEvent MAILBOX_OPEN = registerSoundEvent("mailbox_open");
+    public static final SoundEvent MAILBOX_CLOSE = registerSoundEvent("mailbox_close");
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier id = CityEssentials.id(name);

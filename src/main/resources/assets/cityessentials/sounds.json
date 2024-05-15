@@ -22,5 +22,17 @@
     "sounds": [
       "cityessentials:grocery_bag_open"
     ]
+  },
+  "mailbox_open": {
+    "subtitle": "sounds.cityessentials.mailbox_open",
+    "sounds": [
+      "cityessentials:mailbox_open"
+    ]
+  },
+  "mailbox_close": {
+    "subtitle": "sounds.cityessentials.mailbox_close",
+    "sounds": [
+      "cityessentials:mailbox_close"
+    ]
   }
 }
