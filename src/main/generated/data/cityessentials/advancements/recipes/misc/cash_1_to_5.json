@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cash_1": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cityessentials:cash_1"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cash_5": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cityessentials:cash_5"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cityessentials:cash_1_to_5"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cash_1",
+      "has_cash_5",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cityessentials:cash_1_to_5"
+    ]
+  },
+  "sends_telemetry_event": false
+}

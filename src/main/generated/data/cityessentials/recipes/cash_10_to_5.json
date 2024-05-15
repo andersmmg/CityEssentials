@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cityessentials:cash_10"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "cityessentials:cash_5"
+  }
+}

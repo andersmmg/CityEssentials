@@ -1,6 +1,10 @@
 {
   "item.cityessentials.paper_bag": "Paper Bag",
   "item.cityessentials.grocery_bag": "Grocery Bag",
+  "item.cityessentials.cash_1": "$1 Bill",
+  "item.cityessentials.cash_5": "$5 Bill",
+  "item.cityessentials.cash_10": "$10 Bill",
+  "item.cityessentials.cash_20": "$20 Bill",
   "container.box.more": "and %s more...",
   "block.cityessentials.cash_register": "Cash Register",
   "sounds.cityessentials.cash_register_open": "Cash Register Opened",

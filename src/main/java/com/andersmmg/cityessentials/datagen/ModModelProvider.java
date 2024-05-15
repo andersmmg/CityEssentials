@@ -5,6 +5,7 @@ import com.andersmmg.cityessentials.block.custom.CashRegisterBlock;
 import com.andersmmg.cityessentials.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.util.Identifier;
 
@@ -15,20 +16,25 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        registerCashRegister(blockStateModelGenerator);
+        registerOpenableBlock(blockStateModelGenerator, ModBlocks.CASH_REGISTER);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.PAPER_BAG, Models.GENERATED);
         itemModelGenerator.register(ModItems.GROCERY_BAG, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.CASH_1, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CASH_5, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CASH_10, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CASH_20, Models.GENERATED);
     }
 
-    private void registerCashRegister(BlockStateModelGenerator blockStateModelGenerator) {
-        Identifier identifier = ModelIds.getBlockModelId(ModBlocks.CASH_REGISTER);
-        Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.CASH_REGISTER, "_open");
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.CASH_REGISTER)
+    private void registerOpenableBlock(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier model_base = ModelIds.getBlockModelId(block);
+        Identifier model_open = ModelIds.getBlockSubModelId(block, "_open");
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
                 .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
-                .coordinate(BlockStateModelGenerator.createBooleanModelMap(CashRegisterBlock.OPEN, identifier2, identifier)));
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(CashRegisterBlock.OPEN, model_open, model_base)));
     }
 }
