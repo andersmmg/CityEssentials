@@ -19,6 +19,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         registerOpenableBlock(blockStateModelGenerator, ModBlocks.CASH_REGISTER);
         registerMailbox(blockStateModelGenerator, ModBlocks.MAILBOX);
+        registerRotatable(blockStateModelGenerator, ModBlocks.STOP_SIGN);
+        registerBasicModel(blockStateModelGenerator, ModBlocks.SIGN_POST);
     }
 
     @Override
@@ -27,10 +29,23 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GROCERY_BAG, Models.GENERATED);
         itemModelGenerator.register(ModItems.ENVELOPE, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.MARKER, Models.GENERATED);
+
         itemModelGenerator.register(ModItems.CASH_1, Models.GENERATED);
         itemModelGenerator.register(ModItems.CASH_5, Models.GENERATED);
         itemModelGenerator.register(ModItems.CASH_10, Models.GENERATED);
         itemModelGenerator.register(ModItems.CASH_20, Models.GENERATED);
+    }
+
+    private void registerBasicModel(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier model_base = ModelIds.getBlockModelId(block);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, model_base)));
+    }
+
+    private void registerRotatable(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier model_base = ModelIds.getBlockModelId(block);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, model_base))
+                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
     }
 
     private void registerOpenableBlock(BlockStateModelGenerator blockStateModelGenerator, Block block) {

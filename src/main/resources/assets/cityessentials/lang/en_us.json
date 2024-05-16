@@ -11,6 +11,8 @@
   "container.box.more": "and %s more...",
   "block.cityessentials.cash_register": "Cash Register",
   "block.cityessentials.mailbox": "Mailbox",
+  "block.cityessentials.stop_sign": "Stop Sign",
+  "block.cityessentials.sign_post": "Sign Post",
   "sounds.cityessentials.cash_register_open": "Cash Register Opened",
   "sounds.cityessentials.cash_register_close": "Cash Register Closed",
   "sounds.cityessentials.paper_bag_open": "Bag Rustles",

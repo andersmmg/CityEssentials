@@ -1,7 +1,7 @@
 package com.andersmmg.cityessentials;
 
 import com.andersmmg.cityessentials.block.ModBlocks;
-import com.andersmmg.cityessentials.block.entity.MailboxBlockEntity;
+import com.andersmmg.cityessentials.block.entity.EditableSign;
 import com.andersmmg.cityessentials.block.entity.ModBlockEntities;
 import com.andersmmg.cityessentials.config.ModConfig;
 import com.andersmmg.cityessentials.item.ModItemGroups;
@@ -40,8 +40,8 @@ public class CityEssentials implements ModInitializer {
         SIGN_UPDATE_CHANNEL.registerServerbound(SignUpdatePacket.class, (message, access) -> {
             World world = access.player().getServerWorld();
             BlockEntity blockEntity = world.getBlockEntity(message.pos());
-            if (blockEntity instanceof MailboxBlockEntity mailboxBlockEntity) {
-                mailboxBlockEntity.setText(message.text());
+            if (blockEntity instanceof EditableSign signBlockEntity) {
+                signBlockEntity.setText(message.text());
             }
         });
     }

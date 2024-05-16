@@ -3,6 +3,7 @@ package com.andersmmg.cityessentials.item;
 import com.andersmmg.cityessentials.CityEssentials;
 import com.andersmmg.cityessentials.item.custom.BagItem;
 import com.andersmmg.cityessentials.item.custom.EnvelopeItem;
+import com.andersmmg.cityessentials.item.custom.MarkerItem;
 import com.andersmmg.cityessentials.sounds.ModSounds;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.Item;
@@ -13,6 +14,8 @@ public class ModItems {
     public static final Item PAPER_BAG = registerItem("paper_bag", new BagItem(new OwoItemSettings().maxCount(1).group(ModItemGroups.CITYESSENTIALS_GROUP), ModSounds.PAPER_BAG_OPEN));
     public static final Item GROCERY_BAG = registerItem("grocery_bag", new BagItem(new OwoItemSettings().maxCount(1).group(ModItemGroups.CITYESSENTIALS_GROUP), ModSounds.GROCERY_BAG_OPEN));
     public static final Item ENVELOPE = registerItem("envelope", new EnvelopeItem(new OwoItemSettings().maxCount(1).group(ModItemGroups.CITYESSENTIALS_GROUP)));
+
+    public static final Item MARKER = registerItem("marker", new MarkerItem(new OwoItemSettings().maxCount(1).group(ModItemGroups.CITYESSENTIALS_GROUP)));
 
     public static final Item CASH_1 = registerItem("cash_1", new Item(new OwoItemSettings().group(ModItemGroups.CITYESSENTIALS_GROUP)));
     public static final Item CASH_5 = registerItem("cash_5", new Item(new OwoItemSettings().group(ModItemGroups.CITYESSENTIALS_GROUP)));

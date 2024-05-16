@@ -1,10 +1,8 @@
 package com.andersmmg.cityessentials.block.entity;
 
 import blue.endless.jankson.annotation.Nullable;
-import com.andersmmg.cityessentials.CityEssentials;
 import com.andersmmg.cityessentials.block.custom.MailboxBlock;
 import com.andersmmg.cityessentials.client.screen.Mod3X3ContainerScreenHandler;
-import com.andersmmg.cityessentials.record.SignUpdatePacket;
 import com.andersmmg.cityessentials.sounds.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -28,7 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class MailboxBlockEntity extends LootableContainerBlockEntity {
+public class MailboxBlockEntity extends LootableContainerBlockEntity implements EditableSign {
     private Text text = Text.literal("");
 
     private final ViewerCountManager stateManager = new ViewerCountManager() {
@@ -68,7 +66,7 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity {
     public void setText(Text text) {
         this.text = text;
         if (world.isClient) {
-            sendUpdatePacket(); // Send packet to server
+            sendUpdatePacket(this.pos, this.text); // Send packet to server
         } else {
             markDirty();
             world.updateListeners(pos, getCachedState(), getCachedState(), 3);
@@ -78,11 +76,6 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity {
     // Getter for the text
     public Text getText() {
         return this.text;
-    }
-
-    // Method to send update packet to clients
-    private void sendUpdatePacket() {
-        CityEssentials.SIGN_UPDATE_CHANNEL.clientHandle().send(new SignUpdatePacket(pos, this.text));
     }
 
     @Nullable

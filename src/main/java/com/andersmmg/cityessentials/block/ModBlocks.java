@@ -3,6 +3,8 @@ package com.andersmmg.cityessentials.block;
 import com.andersmmg.cityessentials.CityEssentials;
 import com.andersmmg.cityessentials.block.custom.CashRegisterBlock;
 import com.andersmmg.cityessentials.block.custom.MailboxBlock;
+import com.andersmmg.cityessentials.block.custom.SignPostBlock;
+import com.andersmmg.cityessentials.block.custom.StopSignBlock;
 import com.andersmmg.cityessentials.item.ModItemGroups;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -18,6 +20,10 @@ public class ModBlocks {
             new CashRegisterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block MAILBOX = registerBlock("mailbox",
             new MailboxBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block STOP_SIGN = registerBlock("stop_sign",
+            new StopSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block SIGN_POST = registerBlock("sign_post",
+            new SignPostBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
