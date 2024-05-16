@@ -1,0 +1,7 @@
+{
+  "parent": "cityessentials:block/stop_sign",
+  "textures": {
+    "1": "cityessentials:block/speed_limit_sign",
+    "2": "cityessentials:block/speed_limit_sign_back"
+  }
+}

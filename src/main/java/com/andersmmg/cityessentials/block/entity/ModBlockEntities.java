@@ -24,6 +24,10 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("stop_sign_be"),
                     FabricBlockEntityTypeBuilder.create(StopSignBlockEntity::new,
                             ModBlocks.STOP_SIGN).build());
+    public static final BlockEntityType<SpeedLimitSignBlockEntity> SPEED_LIMIT_SIGN_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("speed_limit_sign_be"),
+                    FabricBlockEntityTypeBuilder.create(SpeedLimitSignBlockEntity::new,
+                            ModBlocks.SPEED_LIMIT_SIGN).build());
 
 
 }
