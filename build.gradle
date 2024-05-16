@@ -111,7 +111,7 @@ publishing {
 }
 
 changelog {
-    repositoryUrl = "https://github.com/andersmmg/fallout-stuff"
+    repositoryUrl = "https://github.com/andersmmg/CityEssentials"
     groups = ["Added", "Changed", "Deprecated", "Removed", "Fixed"]
     keepUnreleasedSection = true
     version = mod_version
