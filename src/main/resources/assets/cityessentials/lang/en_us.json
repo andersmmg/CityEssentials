@@ -6,6 +6,7 @@
   "item.cityessentials.cash_5": "$5 Bill",
   "item.cityessentials.cash_10": "$10 Bill",
   "item.cityessentials.cash_20": "$20 Bill",
+  "item.cityessentials.marker": "Marker",
   "container.envelope.tooltip.filled": "Filled",
   "container.envelope.tooltip.empty": "Empty",
   "container.box.more": "and %s more...",

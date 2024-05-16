@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EnvelopeItem extends Item {
+public class EnvelopeItem extends Item implements MailboxQuickAddable {
     public EnvelopeItem(Item.Settings settings) {
         super(settings);
     }

@@ -2,6 +2,8 @@ package com.andersmmg.cityessentials.block.custom;
 
 import com.andersmmg.cityessentials.block.entity.MailboxBlockEntity;
 import com.andersmmg.cityessentials.client.screen.MailboxEditScreen;
+import com.andersmmg.cityessentials.item.ModItems;
+import com.andersmmg.cityessentials.item.custom.MailboxQuickAddable;
 import com.andersmmg.cityessentials.util.VoxelUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -50,10 +52,12 @@ public class MailboxBlock extends BlockWithEntity {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof MailboxBlockEntity) {
-            if (player.isSneaking()) {
+            if (player.getStackInHand(hand).isOf(ModItems.MARKER)) {
                 if (world.isClient) {
                     showEditScreen((MailboxBlockEntity) blockEntity);
                 }
+            } else if (player.getStackInHand(hand).getItem() instanceof MailboxQuickAddable) {
+                return ActionResult.PASS;
             } else {
                 if (!world.isClient) {
                     player.openHandledScreen((MailboxBlockEntity) blockEntity);
