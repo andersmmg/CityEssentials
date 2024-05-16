@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Cash items with conversion crafting recipes
 - Functional mailboxes
+- Envelope items
 
 ### Changed
 

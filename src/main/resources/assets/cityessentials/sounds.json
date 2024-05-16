@@ -34,5 +34,11 @@
     "sounds": [
       "cityessentials:mailbox_close"
     ]
+  },
+  "envelope_open": {
+    "subtitle": "sounds.cityessentials.envelope_open",
+    "sounds": [
+      "cityessentials:envelope_open"
+    ]
   }
 }

@@ -71,6 +71,34 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity {
         return Text.translatable(getCachedState().getBlock().getTranslationKey());
     }
 
+    public boolean isInventoryFull() {
+        // Get the mailbox inventory
+        DefaultedList<ItemStack> inventory = this.getInventory();
+
+        // Check if any slot in the inventory is empty
+        for (ItemStack stack : inventory) {
+            if (stack.isEmpty()) {
+                return false; // Inventory is not full
+            }
+        }
+
+        return true; // Inventory is full
+    }
+
+    public void addItem(ItemStack itemStack) {
+        // Get the mailbox inventory
+        DefaultedList<ItemStack> inventory = this.getInventory();
+
+        // Find the first empty slot in the inventory and add the item
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).isEmpty()) {
+                inventory.set(i, itemStack.copy()); // Add the item to the empty slot
+                this.setFlag(this.getCachedState(), true); // Set the flag up
+                return; // Item added successfully
+            }
+        }
+    }
+
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
@@ -141,5 +169,9 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity {
     @Override
     public int size() {
         return 3 * 3;
+    }
+
+    public DefaultedList<ItemStack> getInventory() {
+        return items;
     }
 }
