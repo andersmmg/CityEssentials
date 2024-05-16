@@ -1,7 +1,10 @@
 package com.andersmmg.cityessentials.block.entity;
 
+import blue.endless.jankson.annotation.Nullable;
+import com.andersmmg.cityessentials.CityEssentials;
 import com.andersmmg.cityessentials.block.custom.MailboxBlock;
 import com.andersmmg.cityessentials.client.screen.Mod3X3ContainerScreenHandler;
+import com.andersmmg.cityessentials.record.SignUpdatePacket;
 import com.andersmmg.cityessentials.sounds.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,6 +16,9 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -23,6 +29,8 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 public class MailboxBlockEntity extends LootableContainerBlockEntity {
+    private Text text = Text.literal("");
+
     private final ViewerCountManager stateManager = new ViewerCountManager() {
 
         @Override
@@ -54,6 +62,46 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity {
 
     public MailboxBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModBlockEntities.MAILBOX_BLOCK_ENTITY, blockPos, blockState);
+    }
+
+    // Method to update the text
+    public void setText(Text text) {
+        this.text = text;
+        if (world.isClient) {
+            sendUpdatePacket(); // Send packet to server
+        } else {
+            markDirty();
+            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
+    }
+
+    // Getter for the text
+    public Text getText() {
+        return this.text;
+    }
+
+    // Method to send update packet to clients
+    private void sendUpdatePacket() {
+        CityEssentials.SIGN_UPDATE_CHANNEL.clientHandle().send(new SignUpdatePacket(pos, this.text));
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        return createNbt();
+    }
+
+    @Override
+    public void markDirty() {
+        super.markDirty();
+        if (world != null && !world.isClient) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
     }
 
     @Override
@@ -103,12 +151,14 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity {
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, items);
+        nbt.putString("text", Text.Serializer.toJson(this.text));
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         Inventories.readNbt(nbt, items);
+        this.text = Text.Serializer.fromJson(nbt.getString("text"));
     }
 
     @Override

@@ -7,7 +7,7 @@ import io.wispforest.owo.itemgroup.OwoItemGroup;
 
 public class ModItemGroups {
     public static final OwoItemGroup CITYESSENTIALS_GROUP = OwoItemGroup
-            .builder(CityEssentials.id("fallout_stuff"), () -> Icon.of(ModItems.PAPER_BAG))
+            .builder(CityEssentials.id("item_group"), () -> Icon.of(ModItems.PAPER_BAG))
             .build();
 
     public static void registerItemGroups() {

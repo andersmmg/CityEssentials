@@ -1,9 +1,13 @@
 package com.andersmmg.cityessentials.block.custom;
 
 import com.andersmmg.cityessentials.block.entity.MailboxBlockEntity;
+import com.andersmmg.cityessentials.client.screen.MailboxEditScreen;
 import com.andersmmg.cityessentials.util.VoxelUtils;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -44,15 +48,29 @@ public class MailboxBlock extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (world.isClient) {
-            return ActionResult.SUCCESS;
-        }
-
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof MailboxBlockEntity) {
-            player.openHandledScreen((MailboxBlockEntity) blockEntity);
+            if (player.isSneaking()) {
+                if (world.isClient) {
+                    showEditScreen((MailboxBlockEntity) blockEntity);
+                }
+            } else {
+                if (!world.isClient) {
+                    player.openHandledScreen((MailboxBlockEntity) blockEntity);
+                    return ActionResult.CONSUME;
+                }
+            }
         }
         return ActionResult.CONSUME;
+    }
+
+    @Environment(EnvType.CLIENT)
+    private void showEditScreen(MailboxBlockEntity blockEntity) {
+        if (blockEntity == null) {
+            return;
+        }
+        MailboxEditScreen screen = new MailboxEditScreen(blockEntity);
+        MinecraftClient.getInstance().setScreen(screen);
     }
 
     @Override

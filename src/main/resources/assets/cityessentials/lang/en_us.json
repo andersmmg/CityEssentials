@@ -19,5 +19,6 @@
   "sounds.cityessentials.mailbox_close": "Mailbox Closed",
   "sounds.cityessentials.envelope_open": "Envelope Opened",
   "text.config.cityessentials.title": "City Essentials Configuration",
-  "itemGroup.cityessentials.fallout_stuff": "City Essentials"
+  "gui.cityessentials.mailbox.edit_name": "Edit Name",
+  "itemGroup.cityessentials.item_group": "City Essentials"
 }
