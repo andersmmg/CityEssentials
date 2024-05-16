@@ -4,7 +4,10 @@
   "version": "${version}",
   "name": "CityEssentials",
   "description": "",
-  "authors": [],
+  "authors": [
+    "andersmmg",
+    "Unknowniann"
+  ],
   "contact": {
     "repo": "https://github.com/andersmmg/CityEssentials"
   },
