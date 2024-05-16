@@ -49,7 +49,7 @@ public class EnvelopeItem extends Item implements MailboxQuickAddable {
             assert mailbox != null;
             if (!mailbox.isInventoryFull()) {
                 mailbox.addItem(context.getStack());
-                context.getPlayer().getInventory().removeStack(context.getPlayer().getInventory().getSlotWithStack(context.getStack()));
+                context.getPlayer().getInventory().removeStack(context.getPlayer().getInventory().selectedSlot);
                 return ActionResult.SUCCESS;
             } else {
                 return ActionResult.FAIL;

@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- Sometimes adding the wrong envelope to mailbox
+
 ## [0.2.2] - 2024-05-16
 
 ### Added
