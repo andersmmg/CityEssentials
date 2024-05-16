@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+## [0.2.3] - 2024-05-16
+
+### Fixed
+
 - Sometimes adding the wrong envelope to mailbox
 
 ## [0.2.2] - 2024-05-16
@@ -52,8 +56,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added grocery bags
 - Added functional cash register block
 
-[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.2.3...HEAD
 
+[0.2.3]: https://github.com/andersmmg/CityEssentials/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/andersmmg/CityEssentials/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/andersmmg/CityEssentials/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/andersmmg/CityEssentials/compare/v0.1.0...v0.2.0
