@@ -45,12 +45,12 @@ public class SpeedLimitSignBlockEntityRenderer implements BlockEntityRenderer<Sp
         float f = (float) (-this.textRenderer.getWidth(signText) / 2);
         float g = (float) (-this.textRenderer.fontHeight / 2);
 
-        this.textRenderer.draw(firstText, ((float) -this.textRenderer.getWidth(firstText) / 2), g - 14, Colors.BLACK, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, 255);
+        this.textRenderer.draw(firstText, ((float) -this.textRenderer.getWidth(firstText) / 2) + 0.5f, g - 14, Colors.BLACK, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, 255);
 
-        this.textRenderer.draw(secondText, ((float) -this.textRenderer.getWidth(secondText) / 2), g - 4, Colors.BLACK, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, 255);
+        this.textRenderer.draw(secondText, ((float) -this.textRenderer.getWidth(secondText) / 2) + 0.5f, g - 4, Colors.BLACK, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, 255);
 
         matrices.scale(speedTextScale, speedTextScale, 1);
-        this.textRenderer.draw(signText, f, g + 6, Colors.BLACK, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, 255);
+        this.textRenderer.draw(signText, f + 0.5f, g + 6, Colors.BLACK, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, 255);
         matrices.pop();
     }
 
