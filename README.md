@@ -1,4 +1,4 @@
-City Essentials
+## City Essentials
 
 [![Modrinth](https://img.shields.io/badge/Modrinth-1bd96a?style=for-the-badge&logo=modrinth&logoColor=white)
 ](https://modrinth.com/mod/city-essentials)
@@ -15,6 +15,9 @@ City essentials. Items and blocks for city-style roleplay or decoration.
 
 - **Cash Register:** Store money for customers, or just use it for looks!
 - **Bags:** Store items with quick access from your hotbar
+- **Cash:** 4 denominations of cash with conversion crafting recipes
+- **Mailboxes:** A nice-looking place to get your mail, with a little flag so you know when to check!
+- **Envelopes:** Handy for sending items in one slot
 
 ### Requirements:
 
@@ -32,7 +35,9 @@ City essentials. Items and blocks for city-style roleplay or decoration.
 
 ### Planned Possible Features:
 
-- **Doorbells**
+- Doorbells
+- Picnic basket and blanket
+- Gift boxes and packages
 
 Please note that these features are planned possibilities and not guaranteed. As a solo developer, I'll do my best to
 implement them, but development priorities may change.
