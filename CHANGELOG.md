@@ -7,9 +7,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Customizable speed limit sign
-- Blue mail dropbox
-
 ### Changed
 
 ### Deprecated
@@ -17,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Removed
 
 ### Fixed
+
+## [0.2.5] - 2024-05-17
+
+### Added
+
+- Customizable speed limit sign
+- Blue mail dropbox
 
 ## [0.2.4] - 2024-05-16
 
@@ -65,8 +69,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added grocery bags
 - Added functional cash register block
 
-[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.2.4...HEAD
+[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.2.5...HEAD
 
+[0.2.5]: https://github.com/andersmmg/CityEssentials/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/andersmmg/CityEssentials/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/andersmmg/CityEssentials/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/andersmmg/CityEssentials/compare/v0.2.1...v0.2.2
