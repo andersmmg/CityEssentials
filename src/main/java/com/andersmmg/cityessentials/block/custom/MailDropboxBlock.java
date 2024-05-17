@@ -1,15 +1,10 @@
 package com.andersmmg.cityessentials.block.custom;
 
-import com.andersmmg.cityessentials.block.entity.MailboxBlockEntity;
-import com.andersmmg.cityessentials.client.screen.MailboxEditScreen;
-import com.andersmmg.cityessentials.item.ModItems;
+import com.andersmmg.cityessentials.block.entity.MailDropboxBlockEntity;
 import com.andersmmg.cityessentials.item.custom.MailboxQuickAddable;
 import com.andersmmg.cityessentials.util.VoxelUtils;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -33,15 +28,27 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock {
+import java.util.stream.Stream;
+
+public class MailDropboxBlock extends BlockWithEntity implements MailDroppableBlock {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = Properties.OPEN;
-    public static final BooleanProperty FLAG = BooleanProperty.of("flag");
-    private static final VoxelShape VOXEL_SHAPE = VoxelShapes.combineAndSimplify(Block.createCuboidShape(5, 0, 1.5, 11, 5, 14), Block.createCuboidShape(6, 5, 1.5, 10, 6, 14), BooleanBiFunction.OR);
+    private static final VoxelShape VOXEL_SHAPE = Stream.of(
+            Block.createCuboidShape(13, 0, 2, 14, 2, 3),
+            Block.createCuboidShape(2, 2, 2, 14, 12, 14),
+            Block.createCuboidShape(2, 14, 5, 14, 16, 11),
+            Block.createCuboidShape(12, 12, 3, 14, 14, 13),
+            Block.createCuboidShape(2, 12, 3, 4, 14, 13),
+            Block.createCuboidShape(4, 12, 5, 12, 14, 13),
+            Block.createCuboidShape(2, 0, 2, 3, 2, 3),
+            Block.createCuboidShape(2, 0, 13, 3, 2, 14),
+            Block.createCuboidShape(13, 0, 13, 14, 2, 14)
+    ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
+    ;
 
-    public MailboxBlock(Settings settings) {
+    public MailDropboxBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(OPEN, false).with(FLAG, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(OPEN, false));
     }
 
     protected static Direction getDirection(BlockState state) {
@@ -51,30 +58,17 @@ public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof MailboxBlockEntity) {
-            if (player.getStackInHand(hand).isOf(ModItems.MARKER)) {
-                if (world.isClient) {
-                    showEditScreen((MailboxBlockEntity) blockEntity);
-                }
-            } else if (player.getStackInHand(hand).getItem() instanceof MailboxQuickAddable) {
+        if (blockEntity instanceof MailDropboxBlockEntity) {
+            if (player.getStackInHand(hand).getItem() instanceof MailboxQuickAddable) {
                 return ActionResult.PASS;
             } else {
                 if (!world.isClient) {
-                    player.openHandledScreen((MailboxBlockEntity) blockEntity);
+                    player.openHandledScreen((MailDropboxBlockEntity) blockEntity);
                     return ActionResult.CONSUME;
                 }
             }
         }
         return ActionResult.CONSUME;
-    }
-
-    @Environment(EnvType.CLIENT)
-    private void showEditScreen(MailboxBlockEntity blockEntity) {
-        if (blockEntity == null) {
-            return;
-        }
-        MailboxEditScreen screen = new MailboxEditScreen(blockEntity);
-        MinecraftClient.getInstance().setScreen(screen);
     }
 
     @Override
@@ -93,15 +87,15 @@ public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof MailboxBlockEntity) {
-            ((MailboxBlockEntity) blockEntity).tick();
+        if (blockEntity instanceof MailDropboxBlockEntity) {
+            ((MailDropboxBlockEntity) blockEntity).tick();
         }
     }
 
     @Override
     @Nullable
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new MailboxBlockEntity(pos, state);
+        return new MailDropboxBlockEntity(pos, state);
     }
 
     @Override
@@ -112,8 +106,8 @@ public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         BlockEntity blockEntity;
-        if (itemStack.hasCustomName() && (blockEntity = world.getBlockEntity(pos)) instanceof MailboxBlockEntity) {
-            ((MailboxBlockEntity) blockEntity).setCustomName(itemStack.getName());
+        if (itemStack.hasCustomName() && (blockEntity = world.getBlockEntity(pos)) instanceof MailDropboxBlockEntity) {
+            ((MailDropboxBlockEntity) blockEntity).setCustomName(itemStack.getName());
         }
     }
 
@@ -144,7 +138,7 @@ public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock 
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, OPEN, FLAG);
+        builder.add(FACING, OPEN);
     }
 
     @Override

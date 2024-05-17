@@ -1,7 +1,7 @@
 package com.andersmmg.cityessentials.item.custom;
 
-import com.andersmmg.cityessentials.block.custom.MailboxBlock;
-import com.andersmmg.cityessentials.block.entity.MailboxBlockEntity;
+import com.andersmmg.cityessentials.block.custom.MailDroppableBlock;
+import com.andersmmg.cityessentials.block.entity.MailDroppable;
 import com.andersmmg.cityessentials.client.screen.EnvelopeScreenHandler;
 import com.andersmmg.cityessentials.sounds.ModSounds;
 import net.minecraft.client.item.TooltipContext;
@@ -44,8 +44,8 @@ public class EnvelopeItem extends Item implements MailboxQuickAddable {
         if (context.getWorld().isClient()) {
             return ActionResult.SUCCESS;
         }
-        if (context.getWorld().getBlockState(context.getBlockPos()).getBlock() instanceof MailboxBlock) {
-            MailboxBlockEntity mailbox = (MailboxBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+        if (context.getWorld().getBlockState(context.getBlockPos()).getBlock() instanceof MailDroppableBlock) {
+            MailDroppable mailbox = (MailDroppable) context.getWorld().getBlockEntity(context.getBlockPos());
             assert mailbox != null;
             if (!mailbox.isInventoryFull()) {
                 mailbox.addItem(context.getStack());

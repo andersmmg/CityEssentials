@@ -20,6 +20,10 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("mailbox_be"),
                     FabricBlockEntityTypeBuilder.create(MailboxBlockEntity::new,
                             ModBlocks.MAILBOX).build());
+    public static final BlockEntityType<MailDropboxBlockEntity> MAIL_DROPBOX_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("mail_dropbox_be"),
+                    FabricBlockEntityTypeBuilder.create(MailDropboxBlockEntity::new,
+                            ModBlocks.MAIL_DROPBOX).build());
     public static final BlockEntityType<StopSignBlockEntity> STOP_SIGN_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("stop_sign_be"),
                     FabricBlockEntityTypeBuilder.create(StopSignBlockEntity::new,

@@ -1,7 +1,6 @@
 package com.andersmmg.cityessentials.block.entity;
 
-import blue.endless.jankson.annotation.Nullable;
-import com.andersmmg.cityessentials.block.custom.MailboxBlock;
+import com.andersmmg.cityessentials.block.custom.MailDropboxBlock;
 import com.andersmmg.cityessentials.client.screen.Mod3X3ContainerScreenHandler;
 import com.andersmmg.cityessentials.sounds.ModSounds;
 import net.minecraft.block.Block;
@@ -14,9 +13,6 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -26,21 +22,19 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class MailboxBlockEntity extends LootableContainerBlockEntity implements EditableSign, MailDroppable {
-    private Text text = Text.literal("");
-
+public class MailDropboxBlockEntity extends LootableContainerBlockEntity implements MailDroppable {
     private final ViewerCountManager stateManager = new ViewerCountManager() {
 
         @Override
         protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
-            MailboxBlockEntity.this.playSound(state, ModSounds.MAILBOX_OPEN);
-            MailboxBlockEntity.this.setOpen(state, true);
+            MailDropboxBlockEntity.this.playSound(state, ModSounds.MAILBOX_OPEN);
+            MailDropboxBlockEntity.this.setOpen(state, true);
         }
 
         @Override
         protected void onContainerClose(World world, BlockPos pos, BlockState state) {
-            MailboxBlockEntity.this.playSound(state, ModSounds.MAILBOX_CLOSE);
-            MailboxBlockEntity.this.setOpen(state, false);
+            MailDropboxBlockEntity.this.playSound(state, ModSounds.MAILBOX_CLOSE);
+            MailDropboxBlockEntity.this.setOpen(state, false);
         }
 
         @Override
@@ -51,37 +45,15 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity implements 
         protected boolean isPlayerViewing(PlayerEntity player) {
             if (player.currentScreenHandler instanceof Mod3X3ContainerScreenHandler) {
                 Inventory inventory = ((Mod3X3ContainerScreenHandler) player.currentScreenHandler).getInventory();
-                return inventory == MailboxBlockEntity.this;
+                return inventory == MailDropboxBlockEntity.this;
             }
             return false;
         }
     };
     private DefaultedList<ItemStack> items = DefaultedList.ofSize(size(), ItemStack.EMPTY);
 
-    public MailboxBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ModBlockEntities.MAILBOX_BLOCK_ENTITY, blockPos, blockState);
-    }
-
-    // Method to update the text
-    public void setText(Text text) {
-        this.text = text;
-        if (world.isClient) {
-            sendUpdatePacket(this.pos, this.text); // Send packet to server
-        } else {
-            markDirty();
-            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
-        }
-    }
-
-    // Getter for the text
-    public Text getText() {
-        return this.text;
-    }
-
-    @Nullable
-    @Override
-    public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
+    public MailDropboxBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(ModBlockEntities.MAIL_DROPBOX_BLOCK_ENTITY, blockPos, blockState);
     }
 
     @Override
@@ -134,7 +106,6 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity implements 
         for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i).isEmpty()) {
                 inventory.set(i, itemStack.copy()); // Add the item to the empty slot
-                this.setFlag(this.getCachedState(), true); // Set the flag up
                 return; // Item added successfully
             }
         }
@@ -144,14 +115,12 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity implements 
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, items);
-        nbt.putString("text", Text.Serializer.toJson(this.text));
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         Inventories.readNbt(nbt, items);
-        this.text = Text.Serializer.fromJson(nbt.getString("text"));
     }
 
     @Override
@@ -176,11 +145,6 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity implements 
     public void tick() {
         if (!this.removed) {
             this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
-            // Check if there are items inside
-            boolean hasItems = this.hasItemsInAnySlot();
-
-            // Set the flag based on whether there are items
-            setFlag(this.getCachedState(), hasItems);
         }
     }
 
@@ -194,15 +158,11 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity implements 
     }
 
     void setOpen(BlockState state, boolean open) {
-        this.world.setBlockState(this.getPos(), state.with(MailboxBlock.OPEN, open), Block.NOTIFY_ALL);
-    }
-
-    void setFlag(BlockState state, boolean flag) {
-        this.world.setBlockState(this.getPos(), state.with(MailboxBlock.FLAG, flag), Block.NOTIFY_ALL);
+        this.world.setBlockState(this.getPos(), state.with(MailDropboxBlock.OPEN, open), Block.NOTIFY_ALL);
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {
-        Vec3i vec3i = state.get(MailboxBlock.FACING).getVector();
+        Vec3i vec3i = state.get(MailDropboxBlock.FACING).getVector();
         double d = (double) this.pos.getX() + 0.5 + (double) vec3i.getX() / 2.0;
         double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;
         double f = (double) this.pos.getZ() + 0.5 + (double) vec3i.getZ() / 2.0;

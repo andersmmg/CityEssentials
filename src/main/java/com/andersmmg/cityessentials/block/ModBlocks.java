@@ -23,6 +23,8 @@ public class ModBlocks {
             new StopSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
     public static final Block SPEED_LIMIT_SIGN = registerBlock("speed_limit_sign",
             new SpeedLimitSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block MAIL_DROPBOX = registerBlock("mail_dropbox",
+            new MailDropboxBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

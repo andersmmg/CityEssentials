@@ -22,6 +22,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerBasicModel(blockStateModelGenerator, ModBlocks.SIGN_POST);
         registerRotatable(blockStateModelGenerator, ModBlocks.STOP_SIGN);
         registerRotatable(blockStateModelGenerator, ModBlocks.SPEED_LIMIT_SIGN);
+        registerRotatable(blockStateModelGenerator, ModBlocks.MAIL_DROPBOX);
     }
 
     @Override
