@@ -3,6 +3,7 @@ package com.andersmmg.cityessentials;
 import com.andersmmg.cityessentials.block.ModBlocks;
 import com.andersmmg.cityessentials.block.entity.EditableSign;
 import com.andersmmg.cityessentials.block.entity.ModBlockEntities;
+import com.andersmmg.cityessentials.client.screen.ModScreenHandlers;
 import com.andersmmg.cityessentials.config.ModConfig;
 import com.andersmmg.cityessentials.item.ModItemGroups;
 import com.andersmmg.cityessentials.item.ModItems;
@@ -35,6 +36,9 @@ public class CityEssentials implements ModInitializer {
 
         ModBlockEntities.registerBlockEntities();
         ModSounds.registerSounds();
+
+        // Register screen handlers
+        ModScreenHandlers.registerScreenHandlers();
 
         // Register sign update packet
         SIGN_UPDATE_CHANNEL.registerServerbound(SignUpdatePacket.class, (message, access) -> {

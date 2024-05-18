@@ -17,7 +17,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 public class CityEssentialsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        ModScreenHandlers.registerScreenHandlers();
+        ModScreenHandlers.registerScreens();
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SIGN_POST, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STOP_SIGN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPEED_LIMIT_SIGN, RenderLayer.getCutout());
