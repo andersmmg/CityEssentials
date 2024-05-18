@@ -15,6 +15,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+## [0.2.6] - 2024-05-17
+
+### Fixed
+
+- Envelopes & bags not working when connected to a server
+- Missing toolbox sound files
+
 ## [0.2.5] - 2024-05-17
 
 ### Added
@@ -69,8 +76,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added grocery bags
 - Added functional cash register block
 
-[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.2.5...HEAD
+[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.2.6...HEAD
 
+[0.2.6]: https://github.com/andersmmg/CityEssentials/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/andersmmg/CityEssentials/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/andersmmg/CityEssentials/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/andersmmg/CityEssentials/compare/v0.2.2...v0.2.3
