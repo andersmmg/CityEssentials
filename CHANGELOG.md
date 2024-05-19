@@ -7,8 +7,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Automatic door sensors
-
 ### Changed
 
 ### Deprecated
@@ -16,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Removed
 
 ### Fixed
+
+## [0.2.7] - 2024-05-18
+
+### Added
+
+- Automatic door sensors
 
 ## [0.2.6] - 2024-05-17
 
@@ -78,8 +82,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added grocery bags
 - Added functional cash register block
 
-[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.2.6...HEAD
+[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.2.7...HEAD
 
+[0.2.7]: https://github.com/andersmmg/CityEssentials/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/andersmmg/CityEssentials/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/andersmmg/CityEssentials/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/andersmmg/CityEssentials/compare/v0.2.3...v0.2.4
