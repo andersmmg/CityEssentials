@@ -25,6 +25,8 @@ public class ModBlocks {
             new SpeedLimitSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
     public static final Block MAIL_DROPBOX = registerBlock("mail_dropbox",
             new MailDropboxBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block DOOR_SENSOR = registerBlock("door_sensor",
+            new DoorSensorBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
