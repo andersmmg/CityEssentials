@@ -2,6 +2,7 @@ package com.andersmmg.cityessentials.datagen;
 
 import com.andersmmg.cityessentials.block.ModBlocks;
 import com.andersmmg.cityessentials.block.custom.ExitSignBlock;
+import com.andersmmg.cityessentials.block.custom.LampPostBlock;
 import com.andersmmg.cityessentials.block.custom.MailboxBlock;
 import com.andersmmg.cityessentials.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -26,6 +27,8 @@ public class ModModelProvider extends FabricModelProvider {
         registerRotatable(blockStateModelGenerator, ModBlocks.MAIL_DROPBOX);
         registerRotatable(blockStateModelGenerator, ModBlocks.DOOR_SENSOR);
         registerExitSign(blockStateModelGenerator, ModBlocks.EXIT_SIGN);
+        registerLampPost(blockStateModelGenerator, ModBlocks.LAMP_POST);
+        registerLamp(blockStateModelGenerator, ModBlocks.STREET_LAMP);
     }
 
     @Override
@@ -51,6 +54,20 @@ public class ModModelProvider extends FabricModelProvider {
         Identifier model_base = ModelIds.getBlockModelId(block);
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, model_base))
                 .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
+    }
+
+    private void registerLampPost(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier model_base = ModelIds.getBlockSubModelId(block, "_base");
+        Identifier model_connected = ModelIds.getBlockModelId(block);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(LampPostBlock.CONNECTED, model_connected, model_base)));
+    }
+
+    private void registerLamp(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier model_base = ModelIds.getBlockModelId(block);
+        Identifier model_open = ModelIds.getBlockSubModelId(block, "_lit");
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.LIT, model_open, model_base)));
     }
 
     private void registerExitSign(BlockStateModelGenerator blockStateModelGenerator, Block block) {

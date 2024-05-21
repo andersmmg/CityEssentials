@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "cityessentials:block/street_lamp"
+    },
+    "lit=true": {
+      "model": "cityessentials:block/street_lamp_lit"
+    }
+  }
+}

@@ -19,6 +19,7 @@ City essentials. Items and blocks for city-style roleplay or decoration.
 - **Mailboxes:** A nice-looking place to get your mail, with a little flag so you know when to check!
 - **Envelopes:** Handy for sending items in one slot
 - **Signs:** Stop sign, speed limit sign, sign post, and exit sign
+- **Street Lamps:** Light up your streets with redstone-powered lamps and posts
 
 ### Requirements:
 

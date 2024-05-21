@@ -18,6 +18,8 @@
   "block.cityessentials.speed_limit_sign": "Speed Limit Sign",
   "block.cityessentials.door_sensor": "Door Sensor",
   "block.cityessentials.exit_sign": "Exit Sign",
+  "block.cityessentials.street_lamp": "Street Lamp",
+  "block.cityessentials.lamp_post": "Lamp Post",
   "sounds.cityessentials.cash_register_open": "Cash Register Opened",
   "sounds.cityessentials.cash_register_close": "Cash Register Closed",
   "sounds.cityessentials.paper_bag_open": "Bag Rustles",

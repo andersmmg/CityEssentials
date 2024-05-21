@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "connected=false": {
+      "model": "cityessentials:block/lamp_post_base"
+    },
+    "connected=true": {
+      "model": "cityessentials:block/lamp_post"
+    }
+  }
+}

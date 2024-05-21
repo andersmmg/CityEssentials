@@ -29,6 +29,10 @@ public class ModBlocks {
             new DoorSensorBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
     public static final Block EXIT_SIGN = registerBlock("exit_sign",
             new ExitSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block LAMP_POST = registerBlock("lamp_post",
+            new LampPostBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block STREET_LAMP = registerBlock("street_lamp",
+            new StreetLampBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
