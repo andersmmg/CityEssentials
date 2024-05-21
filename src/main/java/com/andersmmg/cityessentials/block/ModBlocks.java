@@ -27,6 +27,8 @@ public class ModBlocks {
             new MailDropboxBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
     public static final Block DOOR_SENSOR = registerBlock("door_sensor",
             new DoorSensorBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block EXIT_SIGN = registerBlock("exit_sign",
+            new ExitSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

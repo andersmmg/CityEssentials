@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "ceiling=false,facing=east": {
+      "model": "cityessentials:block/exit_sign",
+      "y": 90
+    },
+    "ceiling=false,facing=north": {
+      "model": "cityessentials:block/exit_sign"
+    },
+    "ceiling=false,facing=south": {
+      "model": "cityessentials:block/exit_sign",
+      "y": 180
+    },
+    "ceiling=false,facing=west": {
+      "model": "cityessentials:block/exit_sign",
+      "y": 270
+    },
+    "ceiling=true,facing=east": {
+      "model": "cityessentials:block/exit_sign_ceiling",
+      "y": 90
+    },
+    "ceiling=true,facing=north": {
+      "model": "cityessentials:block/exit_sign_ceiling"
+    },
+    "ceiling=true,facing=south": {
+      "model": "cityessentials:block/exit_sign_ceiling",
+      "y": 180
+    },
+    "ceiling=true,facing=west": {
+      "model": "cityessentials:block/exit_sign_ceiling",
+      "y": 270
+    }
+  }
+}

@@ -18,7 +18,7 @@ City essentials. Items and blocks for city-style roleplay or decoration.
 - **Cash:** 4 denominations of cash with conversion crafting recipes
 - **Mailboxes:** A nice-looking place to get your mail, with a little flag so you know when to check!
 - **Envelopes:** Handy for sending items in one slot
-- **Signs:** Stop sign and sign posts, more to come
+- **Signs:** Stop sign, speed limit sign, sign post, and exit sign
 
 ### Requirements:
 
