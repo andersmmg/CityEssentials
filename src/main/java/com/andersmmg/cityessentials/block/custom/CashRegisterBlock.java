@@ -51,11 +51,8 @@ public class CashRegisterBlock extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (world.isClient) {
-            return ActionResult.SUCCESS;
-        }
         if (state.get(OPEN)) {
-            return ActionResult.CONSUME;
+            return ActionResult.FAIL;
         }
         // Check if the player is in front of the block
         Direction facing = state.get(FACING);
@@ -65,14 +62,17 @@ public class CashRegisterBlock extends BlockWithEntity {
 
         float dotProduct = facing.getUnitVector().dot(direction);
         if (dotProduct < 0) {
-            return ActionResult.CONSUME;
+            return ActionResult.FAIL;
         }
 
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        }
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof CashRegisterBlockEntity) {
             player.openHandledScreen((CashRegisterBlockEntity) blockEntity);
         }
-        return ActionResult.CONSUME;
+        return ActionResult.SUCCESS;
     }
 
     @Override
