@@ -1,4 +1,4 @@
-![City Essentials](https://github.com/andersmmg/CityEssentials/assets/16022203/3f4d0784-044a-4b9d-ad41-9bfc46b3e366)
+![City Essentials](https://github.com/andersmmg/CityEssentials/assets/16022203/8c88240e-32da-45cf-847a-589afe2e6336)
 
 [![Modrinth](https://img.shields.io/badge/Modrinth-1bd96a?style=for-the-badge&logo=modrinth&logoColor=white)
 ](https://modrinth.com/mod/city-essentials)
