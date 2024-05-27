@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 public class StreetSignBlock extends BlockWithEntity {
     public static final BooleanProperty TOP = BooleanProperty.of("top");
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    private static final VoxelShape VOXEL_SHAPE = VoxelShapes.combineAndSimplify(Block.createCuboidShape(6.5, 0, 6.5, 9.5, 16, 9.5), Block.createCuboidShape(6, 11, 0, 10, 15, 16), BooleanBiFunction.OR);
+    private static final VoxelShape VOXEL_SHAPE = VoxelShapes.combineAndSimplify(Block.createCuboidShape(6, 0, 6, 10, 16, 10), Block.createCuboidShape(6, 11, 0, 10, 15, 16), BooleanBiFunction.OR);
     private static final VoxelShape VOXEL_SHAPE_TOP = Block.createCuboidShape(0, 0, 6, 16, 4, 10);
 
     public StreetSignBlock(Settings settings) {
