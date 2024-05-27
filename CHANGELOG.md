@@ -9,8 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Exit sign
 - Street lamps
+- Street signs
 
 ### Changed
+
+- Stop signs render text at correct light value
 
 ### Deprecated
 

@@ -20,6 +20,7 @@
   "block.cityessentials.exit_sign": "Exit Sign",
   "block.cityessentials.street_lamp": "Street Lamp",
   "block.cityessentials.lamp_post": "Lamp Post",
+  "block.cityessentials.street_sign": "Street Sign",
   "sounds.cityessentials.cash_register_open": "Cash Register Opened",
   "sounds.cityessentials.cash_register_close": "Cash Register Closed",
   "sounds.cityessentials.paper_bag_open": "Bag Rustles",
@@ -30,5 +31,6 @@
   "text.config.cityessentials.title": "City Essentials Configuration",
   "gui.cityessentials.mailbox.edit_name": "Edit Name",
   "gui.cityessentials.speed_limit.set": "Set Speed Limit",
+  "gui.cityessentials.street_sign.edit_text": "Edit Street",
   "itemGroup.cityessentials.item_group": "City Essentials"
 }

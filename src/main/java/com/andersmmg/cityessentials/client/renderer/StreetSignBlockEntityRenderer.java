@@ -1,7 +1,7 @@
 package com.andersmmg.cityessentials.client.renderer;
 
-import com.andersmmg.cityessentials.block.custom.StopSignBlock;
-import com.andersmmg.cityessentials.block.entity.StopSignBlockEntity;
+import com.andersmmg.cityessentials.block.custom.StreetSignBlock;
+import com.andersmmg.cityessentials.block.entity.StreetSignBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -12,37 +12,46 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.text.Text;
-import net.minecraft.util.Colors;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.*;
 
-public class StopSignBlockEntityRenderer implements BlockEntityRenderer<StopSignBlockEntity> {
+public class StreetSignBlockEntityRenderer implements BlockEntityRenderer<StreetSignBlockEntity> {
     private final TextRenderer textRenderer;
 
-    private static final int RENDER_DISTANCE = MathHelper.square(64);
+    private static final int RENDER_DISTANCE = MathHelper.square(32);
 
-    public StopSignBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+    public StreetSignBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         this.textRenderer = ctx.getTextRenderer();
     }
 
     @Override
-    public void render(StopSignBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    public void render(StreetSignBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         if (!shouldRender(entity.getPos())) {
             return;
         }
+        boolean top = entity.getCachedState().get(StreetSignBlock.TOP);
         matrices.push();
         matrices.translate(0.5f, 0.5f, 0.5f);
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(getRotation(entity)));
-        matrices.translate(0.0f, 0.0f, -0.11f);
-        float textScale = 0.030f;
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
+        matrices.translate(0.0f, 0.3f, -0.13f);
+        if (top) {
+            matrices.translate(0.0f, -0.68f, 0.0f);
+        }
+        float textScale = 0.010f;
         matrices.scale(textScale, textScale, textScale);
         matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180));
 
-        Text signText = Text.literal("STOP");
+        Text signText = entity.getText().copy().formatted(Formatting.WHITE);
+//        Text signText = Text.literal("Hello, World!").formatted(Formatting.WHITE);
 
         float f = (float) (-this.textRenderer.getWidth(signText) / 2);
         float g = (float) (-this.textRenderer.fontHeight / 2);
 
-        this.textRenderer.draw(signText, f + 0.5f, g + 0.5f, Colors.WHITE, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, light);
+        this.textRenderer.draw(signText, f, g, 0, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, light);
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
+        matrices.translate(0.0f, 0.0f, -26.0f);
+        this.textRenderer.draw(signText, f, g, 0, false, matrices.peek().getPositionMatrix(), vertexConsumers, TextRenderer.TextLayerType.POLYGON_OFFSET, 0, light);
         matrices.pop();
     }
 
@@ -58,9 +67,12 @@ public class StopSignBlockEntityRenderer implements BlockEntityRenderer<StopSign
 
     }
 
-    public int getRotation(StopSignBlockEntity entity) {
+    public int getRotation(StreetSignBlockEntity entity) {
         BlockState state = entity.getCachedState();
-        Direction dir = state.get(StopSignBlock.FACING);
+        Direction dir = state.get(StreetSignBlock.FACING);
+        if (entity.getCachedState().get(StreetSignBlock.TOP)) {
+            dir = dir.rotateYClockwise();
+        }
         return switch (dir) {
             case NORTH -> 0;
             case SOUTH -> 180;

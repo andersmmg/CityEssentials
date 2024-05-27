@@ -36,6 +36,10 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("door_sensor_be"),
                     FabricBlockEntityTypeBuilder.create(DoorSensorBlockEntity::new,
                             ModBlocks.DOOR_SENSOR).build());
+    public static final BlockEntityType<StreetSignBlockEntity> STREET_SIGN_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("street_sign_be"),
+                    FabricBlockEntityTypeBuilder.create(StreetSignBlockEntity::new,
+                            ModBlocks.STREET_SIGN).build());
 
 
 }

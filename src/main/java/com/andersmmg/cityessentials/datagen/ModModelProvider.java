@@ -4,6 +4,7 @@ import com.andersmmg.cityessentials.block.ModBlocks;
 import com.andersmmg.cityessentials.block.custom.ExitSignBlock;
 import com.andersmmg.cityessentials.block.custom.LampPostBlock;
 import com.andersmmg.cityessentials.block.custom.MailboxBlock;
+import com.andersmmg.cityessentials.block.custom.StreetSignBlock;
 import com.andersmmg.cityessentials.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -29,6 +30,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerExitSign(blockStateModelGenerator, ModBlocks.EXIT_SIGN);
         registerLampPost(blockStateModelGenerator, ModBlocks.LAMP_POST);
         registerLamp(blockStateModelGenerator, ModBlocks.STREET_LAMP);
+        registerStreetSign(blockStateModelGenerator, ModBlocks.STREET_SIGN);
     }
 
     @Override
@@ -54,6 +56,14 @@ public class ModModelProvider extends FabricModelProvider {
         Identifier model_base = ModelIds.getBlockModelId(block);
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, model_base))
                 .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
+    }
+
+    private void registerStreetSign(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier model_base = ModelIds.getBlockModelId(block);
+        Identifier model_top = ModelIds.getBlockSubModelId(block, "_top");
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(StreetSignBlock.TOP, model_top, model_base)));
     }
 
     private void registerLampPost(BlockStateModelGenerator blockStateModelGenerator, Block block) {

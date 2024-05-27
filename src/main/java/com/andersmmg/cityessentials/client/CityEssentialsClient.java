@@ -5,6 +5,7 @@ import com.andersmmg.cityessentials.block.entity.ModBlockEntities;
 import com.andersmmg.cityessentials.client.renderer.MailboxBlockEntityRenderer;
 import com.andersmmg.cityessentials.client.renderer.SpeedLimitSignBlockEntityRenderer;
 import com.andersmmg.cityessentials.client.renderer.StopSignBlockEntityRenderer;
+import com.andersmmg.cityessentials.client.renderer.StreetSignBlockEntityRenderer;
 import com.andersmmg.cityessentials.client.screen.ModScreenHandlers;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -22,8 +23,10 @@ public class CityEssentialsClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STOP_SIGN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPEED_LIMIT_SIGN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EXIT_SIGN, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STREET_SIGN, RenderLayer.getCutout());
         BlockEntityRendererFactories.register(ModBlockEntities.MAILBOX_BLOCK_ENTITY, MailboxBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.STOP_SIGN_BLOCK_ENTITY, StopSignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SPEED_LIMIT_SIGN_BLOCK_ENTITY, SpeedLimitSignBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.STREET_SIGN_BLOCK_ENTITY, StreetSignBlockEntityRenderer::new);
     }
 }

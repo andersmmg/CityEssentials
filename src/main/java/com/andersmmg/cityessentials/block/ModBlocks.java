@@ -33,6 +33,8 @@ public class ModBlocks {
             new LampPostBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
     public static final Block STREET_LAMP = registerBlock("street_lamp",
             new StreetLampBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block STREET_SIGN = registerBlock("street_sign",
+            new StreetSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

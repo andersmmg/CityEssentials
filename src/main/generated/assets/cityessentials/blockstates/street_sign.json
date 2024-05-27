@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,top=false": {
+      "model": "cityessentials:block/street_sign",
+      "y": 90
+    },
+    "facing=east,top=true": {
+      "model": "cityessentials:block/street_sign_top",
+      "y": 90
+    },
+    "facing=north,top=false": {
+      "model": "cityessentials:block/street_sign"
+    },
+    "facing=north,top=true": {
+      "model": "cityessentials:block/street_sign_top"
+    },
+    "facing=south,top=false": {
+      "model": "cityessentials:block/street_sign",
+      "y": 180
+    },
+    "facing=south,top=true": {
+      "model": "cityessentials:block/street_sign_top",
+      "y": 180
+    },
+    "facing=west,top=false": {
+      "model": "cityessentials:block/street_sign",
+      "y": 270
+    },
+    "facing=west,top=true": {
+      "model": "cityessentials:block/street_sign_top",
+      "y": 270
+    }
+  }
+}
