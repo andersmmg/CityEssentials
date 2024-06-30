@@ -55,7 +55,6 @@ public class CityEssentials implements ModInitializer {
 
         // Register envelope seal packet
         ENVELOPE_SEAL_CHANNEL.registerServerbound(EnvelopeSealPacket.class, (message, access) -> {
-            // TODO: add nbt tags for sender and receiver to the item
             ServerPlayerEntity player = access.player();
             player.getStackInHand(message.hand()).getOrCreateNbt().put("sender", NbtString.of(player.getEntityName()));
             player.getStackInHand(message.hand()).getOrCreateNbt().put("receiver", NbtString.of(message.receiver()));

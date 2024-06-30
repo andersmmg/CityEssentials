@@ -1,5 +1,6 @@
 package com.andersmmg.cityessentials.client.screen;
 
+import com.andersmmg.cityessentials.item.custom.EnvelopeItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -7,6 +8,7 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.screen.slot.SlotActionType;
 
 public class EnvelopeScreenHandler extends ScreenHandler {
     public static final int SLOT_COUNT = 3;
@@ -69,5 +71,19 @@ public class EnvelopeScreenHandler extends ScreenHandler {
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
         this.inventory.onClose(player);
+    }
+
+    @Override
+    public void onSlotClick(int slotId, int clickData, SlotActionType actionType, PlayerEntity playerEntity) {
+        if (slotId >= 0) { // slotId < 0 are used for networking internals
+            ItemStack stack = getSlot(slotId).getStack();
+
+            if (stack.getItem() instanceof EnvelopeItem) {
+                // Prevent moving envelopes around
+                return;
+            }
+        }
+
+        super.onSlotClick(slotId, clickData, actionType, playerEntity);
     }
 }
