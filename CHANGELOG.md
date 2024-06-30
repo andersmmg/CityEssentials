@@ -7,7 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Marker texture instead of placeholder
+
 ### Changed
+
+- Envelopes can now be sealed and signed
 
 ### Deprecated
 
@@ -17,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Cash register open model misaligned
 - Outline shape for street signs
+- Envelopes can no longer be inserted inside themselves
 
 ## [0.3.0] - 2024-05-26
 

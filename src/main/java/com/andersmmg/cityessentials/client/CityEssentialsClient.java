@@ -7,12 +7,17 @@ import com.andersmmg.cityessentials.client.renderer.SpeedLimitSignBlockEntityRen
 import com.andersmmg.cityessentials.client.renderer.StopSignBlockEntityRenderer;
 import com.andersmmg.cityessentials.client.renderer.StreetSignBlockEntityRenderer;
 import com.andersmmg.cityessentials.client.screen.ModScreenHandlers;
+import com.andersmmg.cityessentials.item.ModItems;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.util.Identifier;
+
+import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
 public class CityEssentialsClient implements ClientModInitializer {
@@ -28,5 +33,13 @@ public class CityEssentialsClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.STOP_SIGN_BLOCK_ENTITY, StopSignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SPEED_LIMIT_SIGN_BLOCK_ENTITY, SpeedLimitSignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.STREET_SIGN_BLOCK_ENTITY, StreetSignBlockEntityRenderer::new);
+
+        ModelPredicateProviderRegistry.register(ModItems.ENVELOPE, new Identifier("sealed"), (itemStack, clientWorld, livingEntity, seed) -> {
+            if (itemStack.hasNbt() && Objects.requireNonNull(itemStack.getNbt()).contains("sender")) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
     }
 }

@@ -9,6 +9,9 @@
   "item.cityessentials.marker": "Marker",
   "container.envelope.tooltip.filled": "Filled",
   "container.envelope.tooltip.empty": "Empty",
+  "container.envelope.tooltip.signed": "Signed",
+  "container.envelope.tooltip.fromSender": "from %1$s",
+  "container.envelope.tooltip.toReceiver": "to %1$s",
   "container.box.more": "and %s more...",
   "block.cityessentials.cash_register": "Cash Register",
   "block.cityessentials.mailbox": "Mailbox",
@@ -32,5 +35,7 @@
   "gui.cityessentials.mailbox.edit_name": "Edit Name",
   "gui.cityessentials.speed_limit.set": "Set Speed Limit",
   "gui.cityessentials.street_sign.edit_text": "Edit Street",
+  "gui.cityessentials.envelope.label": "To:",
+  "gui.cityessentials.envelope.seal": "Seal",
   "itemGroup.cityessentials.item_group": "City Essentials"
 }

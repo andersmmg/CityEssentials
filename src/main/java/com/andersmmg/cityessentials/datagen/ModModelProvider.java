@@ -37,7 +37,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.PAPER_BAG, Models.GENERATED);
         itemModelGenerator.register(ModItems.GROCERY_BAG, Models.GENERATED);
-        itemModelGenerator.register(ModItems.ENVELOPE, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.ENVELOPE, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.ENVELOPE, "_open", Models.GENERATED);
 
         itemModelGenerator.register(ModItems.MARKER, Models.GENERATED);
 

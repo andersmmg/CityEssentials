@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cityessentials:item/envelope_open"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "sealed": 1
+      },
+      "model": "cityessentials:item/envelope_sealed"
+    }
+  ]
+}
