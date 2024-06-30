@@ -7,15 +7,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+## [0.3.1] - 2024-06-29
+
+### Added
+
 - Marker texture instead of placeholder
 
 ### Changed
 
 - Envelopes can now be sealed and signed
-
-### Deprecated
-
-### Removed
 
 ### Fixed
 
@@ -102,8 +110,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added grocery bags
 - Added functional cash register block
 
-[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.3.1...HEAD
 
+[0.3.1]: https://github.com/andersmmg/CityEssentials/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/andersmmg/CityEssentials/compare/v0.2.7...v0.3.0
 [0.2.7]: https://github.com/andersmmg/CityEssentials/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/andersmmg/CityEssentials/compare/v0.2.5...v0.2.6
