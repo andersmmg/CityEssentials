@@ -34,11 +34,12 @@ public class OpenClosedSignBlockEntityRenderer implements BlockEntityRenderer<Op
         matrices.translate(0.5f, 0.5f, 0.5f);
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(getRotation(entity)));
         matrices.translate(0.0f, -0.12f, 0.437f);
-        float textScale = 0.02f;
+        float textScale = 0.018f;
         matrices.scale(textScale, textScale, textScale);
         matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180));
 
         Text signText = entity.getCachedState().get(OpenClosedSignBlock.STATE) ? Text.literal("CLOSED").formatted(Formatting.RED) : Text.literal("OPEN").formatted(Formatting.DARK_GREEN);
+        signText = signText.copy().formatted(Formatting.BOLD);
 
         float f = (float) (-this.textRenderer.getWidth(signText) / 2);
         float g = (float) (-this.textRenderer.fontHeight / 2);
