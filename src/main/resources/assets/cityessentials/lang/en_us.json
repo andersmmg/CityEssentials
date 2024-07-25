@@ -24,6 +24,7 @@
   "block.cityessentials.street_lamp": "Street Lamp",
   "block.cityessentials.lamp_post": "Lamp Post",
   "block.cityessentials.street_sign": "Street Sign",
+  "block.cityessentials.open_closed_sign": "Open/Closed Sign",
   "sounds.cityessentials.cash_register_open": "Cash Register Opened",
   "sounds.cityessentials.cash_register_close": "Cash Register Closed",
   "sounds.cityessentials.paper_bag_open": "Bag Rustles",

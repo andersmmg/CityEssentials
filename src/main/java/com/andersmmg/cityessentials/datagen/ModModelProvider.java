@@ -26,6 +26,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerRotatable(blockStateModelGenerator, ModBlocks.STOP_SIGN);
         registerRotatable(blockStateModelGenerator, ModBlocks.SPEED_LIMIT_SIGN);
         registerRotatable(blockStateModelGenerator, ModBlocks.MAIL_DROPBOX);
+        registerRotatable(blockStateModelGenerator, ModBlocks.OPEN_CLOSED_SIGN);
         registerRotatable(blockStateModelGenerator, ModBlocks.DOOR_SENSOR);
         registerExitSign(blockStateModelGenerator, ModBlocks.EXIT_SIGN);
         registerLampPost(blockStateModelGenerator, ModBlocks.LAMP_POST);

@@ -40,6 +40,10 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("street_sign_be"),
                     FabricBlockEntityTypeBuilder.create(StreetSignBlockEntity::new,
                             ModBlocks.STREET_SIGN).build());
+    public static final BlockEntityType<OpenClosedSignBlockEntity> OPEN_CLOSED_SIGN_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, CityEssentials.id("open_closed_sign_be"),
+                    FabricBlockEntityTypeBuilder.create(OpenClosedSignBlockEntity::new,
+                            ModBlocks.OPEN_CLOSED_SIGN).build());
 
 
 }
