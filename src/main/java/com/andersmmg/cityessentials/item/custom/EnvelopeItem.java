@@ -1,6 +1,5 @@
 package com.andersmmg.cityessentials.item.custom;
 
-import com.andersmmg.cityessentials.CityEssentials;
 import com.andersmmg.cityessentials.block.custom.MailDroppableBlock;
 import com.andersmmg.cityessentials.block.entity.MailDroppable;
 import com.andersmmg.cityessentials.client.screen.EnvelopeScreenHandler;
@@ -32,13 +31,17 @@ public class EnvelopeItem extends Item implements MailboxQuickAddable {
         ItemStack stack = user.getStackInHand(hand);
         if (stack.hasNbt() && stack.getNbt().contains("sender")) {
             if (!world.isClient()) {
-                CityEssentials.LOGGER.info("Opened Envelope: " + stack.getNbt().getString("sender"));
-                // give player all items in the envelope
-                for (ItemStack item : new EnvelopeInventory(stack).getItems()) {
-                    user.getInventory().offerOrDrop(item);
-                }
-                ItemStack emptyStack = new ItemStack(this.asItem());
-                return TypedActionResult.success(emptyStack);
+//                CityEssentials.LOGGER.info("Opened Envelope: " + stack.getNbt().getString("sender"));
+//                // give player all items in the envelope
+//                for (ItemStack item : new EnvelopeInventory(stack).getItems()) {
+//                    user.getInventory().offerOrDrop(item);
+//                }
+//                ItemStack emptyStack = new ItemStack(this.asItem());
+                user.sendMessage(Text.translatable("text.cityessentials.envelope.opened", stack.getNbt().getString("sender")));
+                stack.getOrCreateNbt().remove("sender");
+                stack.getOrCreateNbt().remove("receiver");
+                user.openHandledScreen(createScreenHandlerFactory(stack));
+//                return TypedActionResult.success(stack);
             }
         } else {
             user.openHandledScreen(createScreenHandlerFactory(stack));
