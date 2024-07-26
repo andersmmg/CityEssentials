@@ -21,6 +21,7 @@ City essentials. Items and blocks for city-style roleplay or decoration.
 - **Signs:** Stop sign, speed limit sign, sign post, street signs, and exit sign
 - **Street Lamps:** Light up your streets with redstone-powered lamps and posts
 - **Switchable Open/Closed Signs:** Show whether your shop or building is open or closed
+- **Desk Bell:** Ring the bell to get attention
 
 ### Requirements:
 

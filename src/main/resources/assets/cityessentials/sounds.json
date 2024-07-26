@@ -40,5 +40,11 @@
     "sounds": [
       "cityessentials:envelope_open"
     ]
+  },
+  "bell_ding": {
+    "subtitle": "sounds.cityessentials.bell_ding",
+    "sounds": [
+      "cityessentials:bell_ding"
+    ]
   }
 }

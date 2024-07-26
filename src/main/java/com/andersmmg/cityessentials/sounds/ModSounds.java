@@ -14,6 +14,7 @@ public class ModSounds {
     public static final SoundEvent MAILBOX_OPEN = registerSoundEvent("mailbox_open");
     public static final SoundEvent MAILBOX_CLOSE = registerSoundEvent("mailbox_close");
     public static final SoundEvent ENVELOPE_OPEN = registerSoundEvent("envelope_open");
+    public static final SoundEvent BELL_DING = registerSoundEvent("bell_ding");
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier id = CityEssentials.id(name);

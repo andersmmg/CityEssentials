@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "pressed=false": {
+      "model": "cityessentials:block/desk_bell"
+    },
+    "pressed=true": {
+      "model": "cityessentials:block/desk_bell_pressed"
+    }
+  }
+}

@@ -1,10 +1,7 @@
 package com.andersmmg.cityessentials.datagen;
 
 import com.andersmmg.cityessentials.block.ModBlocks;
-import com.andersmmg.cityessentials.block.custom.ExitSignBlock;
-import com.andersmmg.cityessentials.block.custom.LampPostBlock;
-import com.andersmmg.cityessentials.block.custom.MailboxBlock;
-import com.andersmmg.cityessentials.block.custom.StreetSignBlock;
+import com.andersmmg.cityessentials.block.custom.*;
 import com.andersmmg.cityessentials.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -32,6 +29,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerLampPost(blockStateModelGenerator, ModBlocks.LAMP_POST);
         registerLamp(blockStateModelGenerator, ModBlocks.STREET_LAMP);
         registerStreetSign(blockStateModelGenerator, ModBlocks.STREET_SIGN);
+        registerDeskBell(blockStateModelGenerator, ModBlocks.DESK_BELL);
     }
 
     @Override
@@ -96,6 +94,13 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
                 .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
                 .coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.OPEN, model_open, model_base)));
+    }
+
+    private void registerDeskBell(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier model_base = ModelIds.getBlockModelId(block);
+        Identifier model_open = ModelIds.getBlockSubModelId(block, "_pressed");
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(DeskBellBlock.PRESSED, model_open, model_base)));
     }
 
     private void registerMailbox(BlockStateModelGenerator blockStateModelGenerator, Block block) {

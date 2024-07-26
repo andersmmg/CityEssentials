@@ -37,6 +37,8 @@ public class ModBlocks {
             new StreetSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
     public static final Block OPEN_CLOSED_SIGN = registerBlock("open_closed_sign",
             new OpenClosedSignBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
+    public static final Block DESK_BELL = registerBlock("desk_bell",
+            new DeskBellBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
