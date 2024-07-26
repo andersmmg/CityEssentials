@@ -46,5 +46,11 @@
     "sounds": [
       "cityessentials:bell_ding"
     ]
+  },
+  "wallet_open": {
+    "subtitle": "sounds.cityessentials.wallet_open",
+    "sounds": [
+      "cityessentials:wallet_open"
+    ]
   }
 }

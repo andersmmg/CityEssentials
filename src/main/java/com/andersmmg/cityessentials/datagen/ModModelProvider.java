@@ -40,6 +40,7 @@ public class ModModelProvider extends FabricModelProvider {
 //        itemModelGenerator.register(ModItems.ENVELOPE, "_open", Models.GENERATED);
 
         itemModelGenerator.register(ModItems.MARKER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WALLET, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.CASH_1, Models.GENERATED);
         itemModelGenerator.register(ModItems.CASH_5, Models.GENERATED);

@@ -9,10 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Switchable Open/Close signs
 - Desk bell
+- Wallet which counts your money
 
 ### Changed
 
 - Changed envelope mechanics
+- Bags now list items inside in tooltip
 
 ### Deprecated
 
