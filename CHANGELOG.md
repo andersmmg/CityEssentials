@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+## [0.4.0] - 2024-07-25
+
+### Added
+
 - Switchable Open/Close signs
 - Desk bell
 - Wallet which counts your money
@@ -15,12 +27,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Changed envelope mechanics
 - Bags now list items inside in tooltip
-
-### Deprecated
-
-### Removed
-
-### Fixed
 
 ## [0.3.1] - 2024-06-29
 
@@ -117,8 +123,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added grocery bags
 - Added functional cash register block
 
-[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.4.0...HEAD
 
+[0.4.0]: https://github.com/andersmmg/CityEssentials/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/andersmmg/CityEssentials/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/andersmmg/CityEssentials/compare/v0.2.7...v0.3.0
 [0.2.7]: https://github.com/andersmmg/CityEssentials/compare/v0.2.6...v0.2.7
