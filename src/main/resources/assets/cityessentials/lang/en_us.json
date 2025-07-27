@@ -7,6 +7,7 @@
   "item.cityessentials.cash_10": "$10 Bill",
   "item.cityessentials.cash_20": "$20 Bill",
   "item.cityessentials.marker": "Marker",
+  "item.cityessentials.marker.desc": "Allows editing modded signs",
   "item.cityessentials.wallet": "Wallet",
   "container.envelope.tooltip.filled": "Filled",
   "container.envelope.tooltip.empty": "Empty",
