@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Added item description to the marker tooltip
 - Quick mail dropping is now data driven with tags
+- Open/Closed signs now use texture rather than renderer for state
+- Open/Closed signs show opposite state on reverse side, like a flippable sign
 
 ### Deprecated
 

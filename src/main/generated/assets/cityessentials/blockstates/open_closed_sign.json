@@ -1,18 +1,33 @@
 {
   "variants": {
-    "facing=east": {
+    "facing=east,state=false": {
       "model": "cityessentials:block/open_closed_sign",
       "y": 90
     },
-    "facing=north": {
+    "facing=east,state=true": {
+      "model": "cityessentials:block/open_closed_sign_open",
+      "y": 90
+    },
+    "facing=north,state=false": {
       "model": "cityessentials:block/open_closed_sign"
     },
-    "facing=south": {
+    "facing=north,state=true": {
+      "model": "cityessentials:block/open_closed_sign_open"
+    },
+    "facing=south,state=false": {
       "model": "cityessentials:block/open_closed_sign",
       "y": 180
     },
-    "facing=west": {
+    "facing=south,state=true": {
+      "model": "cityessentials:block/open_closed_sign_open",
+      "y": 180
+    },
+    "facing=west,state=false": {
       "model": "cityessentials:block/open_closed_sign",
+      "y": 270
+    },
+    "facing=west,state=true": {
+      "model": "cityessentials:block/open_closed_sign_open",
       "y": 270
     }
   }

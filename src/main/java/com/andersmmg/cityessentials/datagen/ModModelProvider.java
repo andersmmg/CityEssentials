@@ -23,7 +23,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerRotatable(blockStateModelGenerator, ModBlocks.STOP_SIGN);
         registerRotatable(blockStateModelGenerator, ModBlocks.SPEED_LIMIT_SIGN);
         registerRotatable(blockStateModelGenerator, ModBlocks.MAIL_DROPBOX);
-        registerRotatable(blockStateModelGenerator, ModBlocks.OPEN_CLOSED_SIGN);
+        registerOpenClosedSign(blockStateModelGenerator);
         registerRotatable(blockStateModelGenerator, ModBlocks.DOOR_SENSOR);
         registerExitSign(blockStateModelGenerator, ModBlocks.EXIT_SIGN);
         registerLampPost(blockStateModelGenerator, ModBlocks.LAMP_POST);
@@ -51,6 +51,14 @@ public class ModModelProvider extends FabricModelProvider {
     private void registerBasicModel(BlockStateModelGenerator blockStateModelGenerator, Block block) {
         Identifier model_base = ModelIds.getBlockModelId(block);
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, model_base)));
+    }
+
+    private void registerOpenClosedSign(BlockStateModelGenerator blockStateModelGenerator) {
+        Identifier model_open = ModelIds.getBlockSubModelId(ModBlocks.OPEN_CLOSED_SIGN, "_open");
+        Identifier model_closed = ModelIds.getBlockModelId(ModBlocks.OPEN_CLOSED_SIGN);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.OPEN_CLOSED_SIGN)
+                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(OpenClosedSignBlock.STATE, model_open, model_closed)));
     }
 
     private void registerRotatable(BlockStateModelGenerator blockStateModelGenerator, Block block) {

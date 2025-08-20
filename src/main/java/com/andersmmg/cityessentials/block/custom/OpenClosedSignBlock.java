@@ -1,9 +1,10 @@
 package com.andersmmg.cityessentials.block.custom;
 
-import com.andersmmg.cityessentials.block.entity.OpenClosedSignBlockEntity;
 import com.andersmmg.cityessentials.util.VoxelUtils;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
@@ -20,9 +21,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-public class OpenClosedSignBlock extends BlockWithEntity {
+public class OpenClosedSignBlock extends Block {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty STATE = BooleanProperty.of("state");
     private static final VoxelShape VOXEL_SHAPE = Block.createCuboidShape(1, 2, 15, 15, 10, 16);
@@ -43,27 +43,21 @@ public class OpenClosedSignBlock extends BlockWithEntity {
 
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState) state.with(FACING, rotation.rotate(state.get(FACING)));
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockState blockState;
         if (world.isClient) {
-            blockState = (BlockState) state.cycle(STATE);
+            blockState = state.cycle(STATE);
             world.setBlockState(pos, blockState);
             return ActionResult.SUCCESS;
         } else {
-            blockState = (BlockState) state.cycle(STATE);
+            blockState = state.cycle(STATE);
             world.setBlockState(pos, blockState);
             return ActionResult.CONSUME;
         }
-    }
-
-    @Override
-    @Nullable
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new OpenClosedSignBlockEntity(pos, state);
     }
 
     @Override

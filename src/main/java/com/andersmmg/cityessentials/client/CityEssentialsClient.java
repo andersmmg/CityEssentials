@@ -2,7 +2,10 @@ package com.andersmmg.cityessentials.client;
 
 import com.andersmmg.cityessentials.block.ModBlocks;
 import com.andersmmg.cityessentials.block.entity.ModBlockEntities;
-import com.andersmmg.cityessentials.client.renderer.*;
+import com.andersmmg.cityessentials.client.renderer.MailboxBlockEntityRenderer;
+import com.andersmmg.cityessentials.client.renderer.SpeedLimitSignBlockEntityRenderer;
+import com.andersmmg.cityessentials.client.renderer.StopSignBlockEntityRenderer;
+import com.andersmmg.cityessentials.client.renderer.StreetSignBlockEntityRenderer;
 import com.andersmmg.cityessentials.client.screen.ModScreenHandlers;
 import com.andersmmg.cityessentials.item.ModItems;
 import net.fabricmc.api.ClientModInitializer;
@@ -31,7 +34,6 @@ public class CityEssentialsClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.STOP_SIGN_BLOCK_ENTITY, StopSignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SPEED_LIMIT_SIGN_BLOCK_ENTITY, SpeedLimitSignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.STREET_SIGN_BLOCK_ENTITY, StreetSignBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.OPEN_CLOSED_SIGN_BLOCK_ENTITY, OpenClosedSignBlockEntityRenderer::new);
 
         ModelPredicateProviderRegistry.register(ModItems.ENVELOPE, new Identifier("sealed"), (itemStack, clientWorld, livingEntity, seed) -> {
             if (itemStack.hasNbt() && Objects.requireNonNull(itemStack.getNbt()).contains("sender")) {
