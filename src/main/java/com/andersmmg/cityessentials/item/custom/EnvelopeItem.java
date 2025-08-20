@@ -1,26 +1,26 @@
 package com.andersmmg.cityessentials.item.custom;
 
-import com.andersmmg.cityessentials.block.custom.MailDroppableBlock;
-import com.andersmmg.cityessentials.block.entity.MailDroppable;
 import com.andersmmg.cityessentials.client.screen.EnvelopeScreenHandler;
 import com.andersmmg.cityessentials.sounds.ModSounds;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
-import net.minecraft.util.*;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.StringHelper;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EnvelopeItem extends Item implements MailboxQuickAddable {
+public class EnvelopeItem extends MailItem {
     public EnvelopeItem(Item.Settings settings) {
         super(settings);
     }
@@ -31,17 +31,10 @@ public class EnvelopeItem extends Item implements MailboxQuickAddable {
         ItemStack stack = user.getStackInHand(hand);
         if (stack.hasNbt() && stack.getNbt().contains("sender")) {
             if (!world.isClient()) {
-//                CityEssentials.LOGGER.info("Opened Envelope: " + stack.getNbt().getString("sender"));
-//                // give player all items in the envelope
-//                for (ItemStack item : new EnvelopeInventory(stack).getItems()) {
-//                    user.getInventory().offerOrDrop(item);
-//                }
-//                ItemStack emptyStack = new ItemStack(this.asItem());
                 user.sendMessage(Text.translatable("text.cityessentials.envelope.opened", stack.getNbt().getString("sender")));
                 stack.getOrCreateNbt().remove("sender");
                 stack.getOrCreateNbt().remove("receiver");
                 user.openHandledScreen(createScreenHandlerFactory(stack));
-//                return TypedActionResult.success(stack);
             }
         } else {
             user.openHandledScreen(createScreenHandlerFactory(stack));
@@ -54,30 +47,12 @@ public class EnvelopeItem extends Item implements MailboxQuickAddable {
     }
 
     @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
-        if (context.getWorld().isClient()) {
-            return ActionResult.SUCCESS;
-        }
-        if (context.getWorld().getBlockState(context.getBlockPos()).getBlock() instanceof MailDroppableBlock) {
-            MailDroppable mailbox = (MailDroppable) context.getWorld().getBlockEntity(context.getBlockPos());
-            assert mailbox != null;
-            if (!mailbox.isInventoryFull()) {
-                mailbox.addItem(context.getStack());
-                context.getPlayer().getInventory().removeStack(context.getPlayer().getInventory().selectedSlot);
-                return ActionResult.SUCCESS;
-            } else {
-                return ActionResult.FAIL;
-            }
-        }
-        return super.useOnBlock(context);
-    }
-
-    @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
 
         if (stack.hasNbt()) {
             NbtCompound nbtCompound = stack.getNbt();
+            assert nbtCompound != null;
             String string = nbtCompound.getString("sender");
             if (!StringHelper.isEmpty(string)) {
                 tooltip.add(Text.translatable("container.envelope.tooltip.fromSender", string).formatted(Formatting.GRAY));

@@ -26,7 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class MailboxBlockEntity extends LootableContainerBlockEntity implements EditableSign, MailDroppable {
+public class MailboxBlockEntity extends LootableContainerBlockEntity implements EditableSign {
     private Text text = Text.literal("");
 
     private final ViewerCountManager stateManager = new ViewerCountManager() {
@@ -95,6 +95,8 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity implements 
         if (world != null && !world.isClient) {
             world.updateListeners(pos, getCachedState(), getCachedState(), 3);
         }
+        assert world != null;
+        world.scheduleBlockTick(pos, world.getBlockState(pos).getBlock(), 1);
     }
 
     @Override
@@ -110,34 +112,6 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity implements 
     @Override
     protected Text getContainerName() {
         return Text.translatable(getCachedState().getBlock().getTranslationKey());
-    }
-
-    public boolean isInventoryFull() {
-        // Get the mailbox inventory
-        DefaultedList<ItemStack> inventory = this.getInventory();
-
-        // Check if any slot in the inventory is empty
-        for (ItemStack stack : inventory) {
-            if (stack.isEmpty()) {
-                return false; // Inventory is not full
-            }
-        }
-
-        return true; // Inventory is full
-    }
-
-    public void addItem(ItemStack itemStack) {
-        // Get the mailbox inventory
-        DefaultedList<ItemStack> inventory = this.getInventory();
-
-        // Find the first empty slot in the inventory and add the item
-        for (int i = 0; i < inventory.size(); i++) {
-            if (inventory.get(i).isEmpty()) {
-                inventory.set(i, itemStack.copy()); // Add the item to the empty slot
-                this.setFlag(this.getCachedState(), true); // Set the flag up
-                return; // Item added successfully
-            }
-        }
     }
 
     @Override
@@ -176,21 +150,9 @@ public class MailboxBlockEntity extends LootableContainerBlockEntity implements 
     public void tick() {
         if (!this.removed) {
             this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
-            // Check if there are items inside
-            boolean hasItems = this.hasItemsInAnySlot();
-
             // Set the flag based on whether there are items
-            setFlag(this.getCachedState(), hasItems);
+            setFlag(this.getCachedState(), !this.isEmpty());
         }
-    }
-
-    private boolean hasItemsInAnySlot() {
-        for (ItemStack itemStack : this.items) {
-            if (!itemStack.isEmpty()) {
-                return true;
-            }
-        }
-        return false;
     }
 
     void setOpen(BlockState state, boolean open) {

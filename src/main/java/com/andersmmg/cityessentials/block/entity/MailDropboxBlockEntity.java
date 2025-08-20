@@ -22,7 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class MailDropboxBlockEntity extends LootableContainerBlockEntity implements MailDroppable {
+public class MailDropboxBlockEntity extends LootableContainerBlockEntity {
     private final ViewerCountManager stateManager = new ViewerCountManager() {
 
         @Override
@@ -84,33 +84,6 @@ public class MailDropboxBlockEntity extends LootableContainerBlockEntity impleme
         return Text.translatable(getCachedState().getBlock().getTranslationKey());
     }
 
-    public boolean isInventoryFull() {
-        // Get the mailbox inventory
-        DefaultedList<ItemStack> inventory = this.getInventory();
-
-        // Check if any slot in the inventory is empty
-        for (ItemStack stack : inventory) {
-            if (stack.isEmpty()) {
-                return false; // Inventory is not full
-            }
-        }
-
-        return true; // Inventory is full
-    }
-
-    public void addItem(ItemStack itemStack) {
-        // Get the mailbox inventory
-        DefaultedList<ItemStack> inventory = this.getInventory();
-
-        // Find the first empty slot in the inventory and add the item
-        for (int i = 0; i < inventory.size(); i++) {
-            if (inventory.get(i).isEmpty()) {
-                inventory.set(i, itemStack.copy()); // Add the item to the empty slot
-                return; // Item added successfully
-            }
-        }
-    }
-
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
@@ -146,15 +119,6 @@ public class MailDropboxBlockEntity extends LootableContainerBlockEntity impleme
         if (!this.removed) {
             this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
         }
-    }
-
-    private boolean hasItemsInAnySlot() {
-        for (ItemStack itemStack : this.items) {
-            if (!itemStack.isEmpty()) {
-                return true;
-            }
-        }
-        return false;
     }
 
     void setOpen(BlockState state, boolean open) {

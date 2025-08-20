@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "cityessentials:mailbox",
+    "cityessentials:mail_dropbox"
+  ]
+}

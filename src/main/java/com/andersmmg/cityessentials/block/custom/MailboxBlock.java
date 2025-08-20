@@ -3,7 +3,6 @@ package com.andersmmg.cityessentials.block.custom;
 import com.andersmmg.cityessentials.block.entity.MailboxBlockEntity;
 import com.andersmmg.cityessentials.client.screen.MailboxEditScreen;
 import com.andersmmg.cityessentials.item.ModItems;
-import com.andersmmg.cityessentials.item.custom.MailboxQuickAddable;
 import com.andersmmg.cityessentials.util.VoxelUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -33,7 +32,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock {
+public class MailboxBlock extends BlockWithEntity {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = Properties.OPEN;
     public static final BooleanProperty FLAG = BooleanProperty.of("flag");
@@ -56,8 +55,6 @@ public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock 
                 if (world.isClient) {
                     showEditScreen((MailboxBlockEntity) blockEntity);
                 }
-            } else if (player.getStackInHand(hand).getItem() instanceof MailboxQuickAddable) {
-                return ActionResult.PASS;
             } else {
                 if (!world.isClient) {
                     player.openHandledScreen((MailboxBlockEntity) blockEntity);
@@ -129,7 +126,7 @@ public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock 
 
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState) state.with(FACING, rotation.rotate(state.get(FACING)));
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
 
     @Override
@@ -149,6 +146,6 @@ public class MailboxBlock extends BlockWithEntity implements MailDroppableBlock 
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 }

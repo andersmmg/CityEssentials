@@ -1,7 +1,6 @@
 package com.andersmmg.cityessentials.block.custom;
 
 import com.andersmmg.cityessentials.block.entity.MailDropboxBlockEntity;
-import com.andersmmg.cityessentials.item.custom.MailboxQuickAddable;
 import com.andersmmg.cityessentials.util.VoxelUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -30,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
-public class MailDropboxBlock extends BlockWithEntity implements MailDroppableBlock {
+public class MailDropboxBlock extends BlockWithEntity {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = Properties.OPEN;
     private static final VoxelShape VOXEL_SHAPE = Stream.of(
@@ -44,7 +43,6 @@ public class MailDropboxBlock extends BlockWithEntity implements MailDroppableBl
             Block.createCuboidShape(2, 0, 13, 3, 2, 14),
             Block.createCuboidShape(13, 0, 13, 14, 2, 14)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
-    ;
 
     public MailDropboxBlock(Settings settings) {
         super(settings);
@@ -59,13 +57,9 @@ public class MailDropboxBlock extends BlockWithEntity implements MailDroppableBl
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof MailDropboxBlockEntity) {
-            if (player.getStackInHand(hand).getItem() instanceof MailboxQuickAddable) {
-                return ActionResult.PASS;
-            } else {
-                if (!world.isClient) {
-                    player.openHandledScreen((MailDropboxBlockEntity) blockEntity);
-                    return ActionResult.CONSUME;
-                }
+            if (!world.isClient) {
+                player.openHandledScreen((MailDropboxBlockEntity) blockEntity);
+                return ActionResult.CONSUME;
             }
         }
         return ActionResult.CONSUME;
@@ -78,7 +72,7 @@ public class MailDropboxBlock extends BlockWithEntity implements MailDroppableBl
         }
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof Inventory) {
-            ItemScatterer.spawn(world, pos, (Inventory) ((Object) blockEntity));
+            ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
             world.updateComparators(pos, this);
         }
         super.onStateReplaced(state, world, pos, newState, moved);
@@ -123,7 +117,7 @@ public class MailDropboxBlock extends BlockWithEntity implements MailDroppableBl
 
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState) state.with(FACING, rotation.rotate(state.get(FACING)));
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
 
     @Override

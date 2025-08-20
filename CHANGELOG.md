@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - Added item description to the marker tooltip
+- Quick mail dropping is now data driven with tags
 
 ### Deprecated
 
