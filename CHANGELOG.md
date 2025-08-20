@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+## [0.5.0] - 2025-08-19
+
+### Added
+
 - Crafting recipes for all mod items
 
 ### Changed
@@ -15,12 +27,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Quick mail dropping is now data driven with tags
 - Open/Closed signs now use texture rather than renderer for state
 - Open/Closed signs show opposite state on reverse side, like a flippable sign
-
-### Deprecated
-
-### Removed
-
-### Fixed
 
 ## [0.4.1] - 2024-08-14
 
@@ -136,7 +142,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added grocery bags
 - Added functional cash register block
 
-[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/andersmmg/CityEssentials/compare/v0.5.0...HEAD
+
+[0.5.0]: https://github.com/andersmmg/CityEssentials/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/andersmmg/CityEssentials/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/andersmmg/CityEssentials/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/andersmmg/CityEssentials/compare/v0.3.0...v0.3.1
