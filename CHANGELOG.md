@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Crafting recipes for all mod items
+
 ### Changed
 
 - Added item description to the marker tooltip

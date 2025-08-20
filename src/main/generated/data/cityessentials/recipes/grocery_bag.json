@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "p": {
+      "item": "minecraft:paper"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "s s",
+    "p p",
+    " p "
+  ],
+  "result": {
+    "item": "cityessentials:grocery_bag"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": {
+      "item": "minecraft:red_dye"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "n": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "nin",
+    "idi",
+    "nin"
+  ],
+  "result": {
+    "item": "cityessentials:stop_sign"
+  },
+  "show_notification": true
+}

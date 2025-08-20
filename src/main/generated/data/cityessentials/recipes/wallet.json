@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "l": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "ll ",
+    "l  ",
+    "ll "
+  ],
+  "result": {
+    "item": "cityessentials:wallet"
+  },
+  "show_notification": true
+}
